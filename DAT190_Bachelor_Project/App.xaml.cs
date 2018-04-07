@@ -8,10 +8,7 @@ namespace DAT190_Bachelor_Project
         {
             InitializeComponent();
 
-            MainPage = new DAT190_Bachelor_ProjectPage();
-
-           
-
+            MainPage = new MainPage();
 
         }
 

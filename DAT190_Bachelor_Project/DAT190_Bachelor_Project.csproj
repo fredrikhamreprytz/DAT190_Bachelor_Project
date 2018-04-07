@@ -29,14 +29,14 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
-    <EmbeddedResource Include="DAT190_Bachelor_ProjectPage.xaml" />
+    <EmbeddedResource Include="MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DAT190_Bachelor_ProjectPage.xaml.cs">
-      <DependentUpon>DAT190_Bachelor_ProjectPage.xaml</DependentUpon>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\IEmission.cs" />

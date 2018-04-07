@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DAT190_Bachelor_Project.MainPage">
+    
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android, WinPhone, Windows" Value="20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <!-- Main Stack layout -->
+    <StackLayout>
+        
+        <!-- Header -->
+        <StackLayout VerticalOptions="EndAndExpand">
+            <Label x:Name="titleLabel" Text="Your Carbon Footprint" FontSize="40" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
+        <!-- Spacing -->
+        <StackLayout VerticalOptions="CenterAndExpand"></StackLayout>
+        
+        <!-- Content -->
+        <StackLayout VerticalOptions="StartAndExpand">
+
+            <!-- Side by side Layout -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                
+                <!-- Category Labels (Left Box) -->
+                <StackLayout>
+                    <Label x:Name="carTravelEmissionsLabel" Text="Car Travel:" HorizontalTextAlignment="End" />
+                    <Label x:Name="airplaneTravelEmissionsLabel" Text="Airplane Travel:" HorizontalTextAlignment="End" />
+                    <Label x:Name="householdEmissionsLabel" Text="Household:" HorizontalTextAlignment="End" />
+                </StackLayout>
+
+                <!-- Values and Units (Right Box) -->
+                <StackLayout>
+                    <!-- Car Travel Emissions Value and Unit -->
+                    <StackLayout Orientation="Horizontal" Spacing="0">
+                        <Label x:Name="carTravelEmissionsValueLabel" Text="230" />
+                        <Label x:Name="carTravelEmissionsUnitLabel" Text="kg" />
+                    </StackLayout>
+
+                    <!-- Airplane Travel Emissions Value and Unit -->
+                    <StackLayout Orientation="Horizontal" Spacing="0">
+                        <Label x:Name="airplaneTravelEmissionsValueLabel" Text="0" />
+                        <Label x:Name="airplaneTravelEmissionsUnitLabel" Text="kg" />
+                    </StackLayout>
+
+                    <!-- Household Emissions Value and Unit -->
+                    <StackLayout Orientation="Horizontal" Spacing="0">
+                        <Label x:Name="householdEmissionsValueLabel" Text="0" />
+                        <Label x:Name="householdEmissionsUnitLabel" Text="kg" />
+                    </StackLayout>
+                    
+                </StackLayout><!-- End Values and Units Layout -->
+            </StackLayout><!-- End Side by Side Layout -->
+        </StackLayout><!-- End Content Layout -->
+    </StackLayout><!-- End Main Stack Layout -->
+    
+</ContentPage>
