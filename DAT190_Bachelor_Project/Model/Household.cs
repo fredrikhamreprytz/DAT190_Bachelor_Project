@@ -13,7 +13,7 @@ namespace DAT190_Bachelor_Project.Model
 
         public double CalculateCO2()
         {
-            throw new NotImplementedException();
+            return 72.34;
         }
     }
 }

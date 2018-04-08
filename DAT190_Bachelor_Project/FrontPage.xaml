@@ -19,10 +19,15 @@
             <Label x:Name="titleLabel" Text="Your Carbon Footprint" FontSize="40" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
-        <!-- Spacing -->
-        <StackLayout VerticalOptions="CenterAndExpand"></StackLayout>
+        <!-- Total Footprint -->
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" Spacing="0">
+                <Label x:Name="totalCarbonFootprintLabel" Text="0" FontSize="80" />
+                <Label x:Name="totalCarbonFootprintUnitLabel" Text="kg" FontSize="80" />
+            </StackLayout>
+        </StackLayout>
         
-        <!-- Content -->
+        <!-- Details -->
         <StackLayout VerticalOptions="StartAndExpand">
 
             <!-- Side by side Layout -->
