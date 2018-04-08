@@ -8,8 +8,7 @@ namespace DAT190_Bachelor_Project
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
-
+            MainPage = new FrontPage();
         }
 
         protected override void OnStart()
