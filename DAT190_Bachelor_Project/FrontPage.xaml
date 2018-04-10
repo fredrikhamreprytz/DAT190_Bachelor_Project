@@ -23,7 +23,7 @@
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
             <StackLayout Orientation="Horizontal" Spacing="0">
                 <Label x:Name="totalCarbonFootprintLabel" Text="0" FontSize="80" />
-                <Label x:Name="totalCarbonFootprintUnitLabel" Text="kg" FontSize="80" />
+                <Label x:Name="totalCarbonFootprintUnitLabel" Text=" kg" FontSize="80" />
             </StackLayout>
         </StackLayout>
         
@@ -45,19 +45,19 @@
                     <!-- Car Travel Emissions Value and Unit -->
                     <StackLayout Orientation="Horizontal" Spacing="0">
                         <Label x:Name="carTravelEmissionsValueLabel" Text="230" />
-                        <Label x:Name="carTravelEmissionsUnitLabel" Text="kg" />
+                        <Label x:Name="carTravelEmissionsUnitLabel" Text=" kg" />
                     </StackLayout>
 
                     <!-- Airplane Travel Emissions Value and Unit -->
                     <StackLayout Orientation="Horizontal" Spacing="0">
                         <Label x:Name="airplaneTravelEmissionsValueLabel" Text="0" />
-                        <Label x:Name="airplaneTravelEmissionsUnitLabel" Text="kg" />
+                        <Label x:Name="airplaneTravelEmissionsUnitLabel" Text=" kg" />
                     </StackLayout>
 
                     <!-- Household Emissions Value and Unit -->
                     <StackLayout Orientation="Horizontal" Spacing="0">
                         <Label x:Name="householdEmissionsValueLabel" Text="0" />
-                        <Label x:Name="householdEmissionsUnitLabel" Text="kg" />
+                        <Label x:Name="householdEmissionsUnitLabel" Text=" kg" />
                     </StackLayout>
                     
                 </StackLayout><!-- End Values and Units Layout -->
