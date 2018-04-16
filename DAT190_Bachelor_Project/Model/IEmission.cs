@@ -9,7 +9,7 @@ namespace DAT190_Bachelor_Project.Model
         DateTime Date { get; set; }
 
         // Methods
-        double CalculateCO2();
+        double CalculateCO2(double Amount);
 
     }
 }

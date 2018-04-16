@@ -11,7 +11,7 @@ namespace DAT190_Bachelor_Project.Model
         public double KgCO2 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime Date { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public double CalculateCO2()
+        public double CalculateCO2(double Amount)
         {
             return 329.23;
         }
