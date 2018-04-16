@@ -21,9 +21,9 @@ namespace DAT190_Bachelor_Project.Model
 
             double PricePerKm = 1.3206;
             double Km = Amount / PricePerKm;
-            double KgCO2PerKm = 45346;
+           // double KgCO2PerKm = 45346;
 
-            return 329.23;
+            return 329.678;
         }
     }
 }
