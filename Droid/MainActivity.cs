@@ -1,4 +1,6 @@
 ﻿using System;
+using Xamarin.Forms;
+using Plugin.Toasts;
 
 using Android.App;
 using Android.Content;
@@ -21,6 +23,8 @@ namespace DAT190_Bachelor_Project.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            DependencyService.Register<ToastNotification>(); // Register your dependency
+            ToastNotification.Init(this);
 
             LoadApplication(new App());
         }
