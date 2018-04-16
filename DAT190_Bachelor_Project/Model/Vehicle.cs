@@ -10,7 +10,6 @@ namespace DAT190_Bachelor_Project.Model
         private double AverageCO2EmissionPerKm;
 
 
-
         public Vehicle(string RegistrationNumber, VehicleSize Size, FuelType FuelType, double ConsumptionPerKm )
         {
             this.RegistrationNumber = RegistrationNumber;
@@ -95,8 +94,5 @@ namespace DAT190_Bachelor_Project.Model
             return AverageCO2EmissionPerKm;
         }
 
-        public FuelType GetFuelType() {
-            return FuelType;
-        }
     }
 }

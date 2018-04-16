@@ -13,6 +13,16 @@ namespace DAT190_Bachelor_Project.Model
 
         public double CalculateCO2(double Amount)
         {
+            // Average price per km is from kiwi.com/flightpriceindex
+            // Short-haul 27.92 USD, updated 2017
+            // Long-haul 36.14 USD, updated 2017
+            // Average cost/100km = 17.04 USD = 132.06 NOK/100 km = 1.3206 NOK/km
+            // 1 USD = 7,75 NOK
+
+            double PricePerKm = 1.3206;
+            double Km = Amount / PricePerKm;
+            double KgCO2PerKm = 45346;
+
             return 329.23;
         }
     }
