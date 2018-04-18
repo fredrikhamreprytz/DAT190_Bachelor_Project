@@ -8,9 +8,9 @@ namespace DAT190_Bachelor_Project.Model
         {
         }
 
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
         public double KgCO2 { get; set; }
-        public DateTime Date { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime Date { get; set; }
 
         public double CalculateCO2(double Amount)
 
@@ -19,8 +19,7 @@ namespace DAT190_Bachelor_Project.Model
             double KgCO2EkvPerkWh = 0.016;
 
             // Price per kW/h from ssb.no
-            // Last updated 4. quarter 2017
-            // Price in NOK
+            // Last updated 4. quarter 2017, price in NOK
             double PricePerKWh = 0.36;
             KgCO2 = (Amount / PricePerKWh) * KgCO2EkvPerkWh;
 
