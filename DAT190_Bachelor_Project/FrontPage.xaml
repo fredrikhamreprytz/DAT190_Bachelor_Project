@@ -4,22 +4,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SkiaSharpSample"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
-             x:Class="DAT190_Bachelor_Project.FrontPage">
-    
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="20, 40, 20, 20" />
-            <On Platform="Android, WinPhone, Windows" Value="20" />
-        </OnPlatform>
-    </ContentPage.Padding>
+             x:Class="DAT190_Bachelor_Project.FrontPage"
+             BackgroundColor="#e6e6e6">
 
     <!-- Main Stack layout -->
     <StackLayout VerticalOptions="CenterAndExpand">
         
         <!-- Header -->
-        <Label x:Name="titleLabel1" Text="Hei Knut!" FontSize="40" HorizontalTextAlignment="Center"/>
-        <Label x:Name="titleLabel2" Text="Ditt CO2 avtrykk hittil i år er:" FontSize="30" HorizontalTextAlignment="Center"/>
-
+        <StackLayout Padding="40, 0, 40, 0" >
+            <Label x:Name="titleLabel1" Text="Hei Knut!" FontSize="60" HorizontalTextAlignment="Center" TextColor="Gray" Margin="0, 0, 0, 40" />
+            <Label x:Name="titleLabel2" Text="Ditt CO2 avtrykk hittil i år er:" FontSize="40" HorizontalTextAlignment="Center" TextColor="Gray" />
+        </StackLayout>
 
         <skia:SKCanvasView x:Name="carconFootprintCanvas" PaintSurface="OnPaintSurface" HeightRequest="400"/>
         

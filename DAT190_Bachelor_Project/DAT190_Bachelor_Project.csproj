@@ -51,6 +51,8 @@
     <Compile Include="Model\FuelType.cs" />
     <Compile Include="Model\OBPUtil.cs" />
     <Compile Include="Model\Test.cs" />
+    <Compile Include="View\EmissionsCakeView.cs" />
+    <Compile Include="Model\CarbonFootprint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
