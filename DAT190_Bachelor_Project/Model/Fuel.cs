@@ -11,6 +11,9 @@ namespace DAT190_Bachelor_Project.Model
         public SKColor Color { get; set; }
         public string SVGIcon { get; set; }
 
+       
+        private double PricePerLitreFuel { get; set; }
+
         public Fuel(int Id, Vehicle Vehicle)
 
         {
@@ -22,9 +25,8 @@ namespace DAT190_Bachelor_Project.Model
         }
 
         // Calculate CO2-Emission from purchase of fuel and vehicle type
-        public double CalculateCO2(double Amount)
+        public double CalculateCO2(double amount)
         {
-            double PricePerLitreFuel;
             // Set the average price per litre of fuel based on vehicle fuel type
             // Prices are from no.globalpetrolprices.com
             // Last updated on 09.04.2018
@@ -40,13 +42,10 @@ namespace DAT190_Bachelor_Project.Model
             } else {
                 PricePerLitreFuel = 15.00;
             }
-
-            double LitreOfFuel = Amount / PricePerLitreFuel;
-            double KmFromFuel = LitreOfFuel / Vehicle.FuelConsumptionPerKm;
-            KgCO2 = KmFromFuel * Vehicle.FuelConsumptionPerKm;
-
+            double litreOfFuel = amount / PricePerLitreFuel;
+            double kmFromFuel = litreOfFuel / Vehicle.FuelConsumptionPerKm;
+            KgCO2 = kmFromFuel * Vehicle.FuelConsumptionPerKm;
             return KgCO2;
-      
             }
         }
     }

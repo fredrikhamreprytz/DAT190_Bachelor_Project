@@ -19,20 +19,23 @@ namespace DAT190_Bachelor_Project.Model
         public string SVGIcon { get; set; }
 
         // Constants used for emission calculation
-        private double ShortHaulTreshold = 1500;         private double LongHaulTreshold = 2500;         private double S = 158.44;         private double PLF = 0.77;         private double DC = 50.00;         private   double CF = 0.951;         private  double CW = 1.26;         private  double EF = 3.15;         private   double PreProduction = 0.51;         private double Multiplier = 2.00;
+        private double shortHaulTreshold = 1500;         private double longHaulTreshold = 2500;         private double s = 158.44;         private double plf = 0.77;         private double dc = 50.00;         private double cf = 0.951;         private double cw = 1.26;         private double ef = 3.15;         private double preProduction = 0.51;         private double multiplier = 2.00;
         private double a;
-        private  double b;
+        private double b;
         private double c;
 
-        public double CalculateCO2(double Amount)
-        {
-            // Average price per km is from kiwi.com/flightpriceindex
-            // Short-haul 27.92 USD, updated 2017
-            // Long-haul 36.14 USD, updated 2017
-            // Average cost/100km = 17.04 USD = 132.06 NOK/100 km = 1.3206 NOK/km
-            // 1 USD = 7,75 NOK
+        // Average price per km is from kiwi.com/flightpriceindex
+        // Short-haul 27.92 USD, updated 2017
+        // Long-haul 36.14 USD, updated 2017
+        // Average cost/100km = 17.04 USD = 132.06 NOK/100 km = 1.3206 NOK/km
+        // 1 USD = 7,75 NOK
+        double pricePerKm = 1.3206;
 
-            double PricePerKm = 1.3206;             double Km = Amount / PricePerKm;              // Short og long haul flight             if(Km < ShortHaulTreshold) {                 a = 0.0000387871;                 b = 2.9866;                 c = 1263.42;             } else if (Km > LongHaulTreshold) {                 a = 0.000134576;                 b = 6.1798;                 c = 3446.20;             } else {                 a = (0.0000387871 + 0.000134576) / 2;                 b = (2.9866 + 6.1798) / 2;                 c = (1263.42 + 3446.20) / 2;             }              double Emission = ((a * Math.Pow(Km + DC, 2) + b * (Km+DC) + c) / (S * PLF)) * CF * CW * (EF * Multiplier + PreProduction);             return Emission;
+        public double CalculateCO2(double amount)
+        {
+            
+
+             double km = amount / pricePerKm;              // Short og long haul flight             if(km < shortHaulTreshold) {                 a = 0.0000387871;                 b = 2.9866;                 c = 1263.42;             } else if (m > longHaulTreshold) {                 a = 0.000134576;                 b = 6.1798;                 c = 3446.20;             } else {                 a = (0.0000387871 + 0.000134576) / 2;                 b = (2.9866 + 6.1798) / 2;                 c = (1263.42 + 3446.20) / 2;             }              double Emission = ((a * Math.Pow(km + dc, 2) + b * (km + dc) + c) / (a * plf)) * cf * cw * (ef * multiplier + preProduction);             return Emission;
         }
     }
 }

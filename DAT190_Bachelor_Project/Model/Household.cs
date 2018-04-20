@@ -5,6 +5,13 @@ namespace DAT190_Bachelor_Project.Model
     public class Household : IEmission
     {
 
+        // CO2-ekvivalent per kW/h in Norway from electricitymap.org
+       private double kgCO2EkvPerkWh = 0.016;
+
+        // Price per kW/h from ssb.no
+        // Last updated 4. quarter 2017, price in NOK
+       private double pricePerKWh = 0.36;
+
         public Household()
         {
             this.Color = SKColor.Parse("D794E8");
@@ -18,17 +25,10 @@ namespace DAT190_Bachelor_Project.Model
         public SKColor Color { get; set; }
         public string SVGIcon { get; set; }
 
-        public double CalculateCO2(double Amount)
-
+        // Calclul
+        public double CalculateCO2(double amount)
         {
-            // CO2-ekvivalent per kW/h in Norway from electricitymap.org
-            double KgCO2EkvPerkWh = 0.016;
-
-            // Price per kW/h from ssb.no
-            // Last updated 4. quarter 2017, price in NOK
-            double PricePerKWh = 0.36;
-            KgCO2 = (Amount / PricePerKWh) * KgCO2EkvPerkWh;
-
+            KgCO2 = (amount / pricePerKWh) * kgCO2EkvPerkWh;
             return KgCO2;
         }
     }
