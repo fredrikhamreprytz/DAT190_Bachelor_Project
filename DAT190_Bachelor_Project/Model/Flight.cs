@@ -4,6 +4,7 @@ namespace DAT190_Bachelor_Project.Model
 {
     public class Flight : IEmission
     {
+        /* Constants used in formula explained, for more information see              * myclimate.org              * Average seat number (S), average seat number across al cabin classes.               * Passenger Load Factor (PLF) is the average load factor on flights              * Detour Constant (DC) is async distance correction for detours and               * holding patterns, and inefficiencies in the air traffic control systems.               * Cargo Factor (CF), to allocate some of the emissions to cargo load such              * as freight and mail. Number used is in reality (1 - CF).               * Weight Class (WC), takes into account the average seat area in the cabin class.              * Emission Factor (EF), emission factor for combustion of jet fuel.              * PreProduction accounts for the CO2 emissions through pre-production              * of jet fuel/kerosene and fuel combustion.               * Multiplier accounts for the warming effect due to non-CO2 aircraft emissions.              * a , b and c are used in ax^2 + bx + c which is a nonlinear approximation              * for fuel emissions during landing and takeoff cycle including taxi */ 
         public Flight()
         {
             this.Color = SKColor.Parse("FFB0F6");
@@ -11,11 +12,17 @@ namespace DAT190_Bachelor_Project.Model
             this.KgCO2 = CalculateCO2(94);
         }
 
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
         public double KgCO2 { get; set; }
-        public DateTime Date { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime Date { get; set; }
         public SKColor Color { get; set; }
         public string SVGIcon { get; set; }
+
+        // Constants used for emission calculation
+        private double ShortHaulTreshold = 1500;         private double LongHaulTreshold = 2500;         private double S = 158.44;         private double PLF = 0.77;         private double DC = 50.00;         private   double CF = 0.951;         private  double CW = 1.26;         private  double EF = 3.15;         private   double PreProduction = 0.51;         private double Multiplier = 2.00;
+        private double a;
+        private  double b;
+        private double c;
 
         public double CalculateCO2(double Amount)
         {
@@ -25,11 +32,7 @@ namespace DAT190_Bachelor_Project.Model
             // Average cost/100km = 17.04 USD = 132.06 NOK/100 km = 1.3206 NOK/km
             // 1 USD = 7,75 NOK
 
-            double PricePerKm = 1.3206;
-            double Km = Amount / PricePerKm;
-           // double KgCO2PerKm = 45346;
-
-            return 169.68;
+            double PricePerKm = 1.3206;             double Km = Amount / PricePerKm;              // Short og long haul flight             if(Km < ShortHaulTreshold) {                 a = 0.0000387871;                 b = 2.9866;                 c = 1263.42;             } else if (Km > LongHaulTreshold) {                 a = 0.000134576;                 b = 6.1798;                 c = 3446.20;             } else {                 a = (0.0000387871 + 0.000134576) / 2;                 b = (2.9866 + 6.1798) / 2;                 c = (1263.42 + 3446.20) / 2;             }              double Emission = ((a * Math.Pow(Km + DC, 2) + b * (Km+DC) + c) / (S * PLF)) * CF * CW * (EF * Multiplier + PreProduction);             return Emission;
         }
     }
 }
