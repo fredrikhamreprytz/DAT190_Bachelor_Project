@@ -7,6 +7,7 @@ namespace DAT190_Bachelor_Project.Model
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName {  get; set; }
+        public string Password { get; set; }
         public Vehicle Vehicle { get; set; }
         public CarbonFootprint CarbonFootprint { get; set;  }
 
