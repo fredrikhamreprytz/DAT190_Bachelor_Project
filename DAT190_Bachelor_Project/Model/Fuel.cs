@@ -10,9 +10,7 @@ namespace DAT190_Bachelor_Project.Model
         public DateTime Date  { get; set; }
         public SKColor Color { get; set; }
         public string SVGIcon { get; set; }
-
-       
-        private double PricePerLitreFuel { get; set; }
+        public double pricePerLitreFuel;
 
         public Fuel(int Id, Vehicle Vehicle)
 
@@ -34,15 +32,15 @@ namespace DAT190_Bachelor_Project.Model
 
             // Fuel type is Petrol
             if (Vehicle.FuelType == FuelType.Petrol || Vehicle.FuelType == FuelType.PlugInHybrid) {
-                PricePerLitreFuel = 15.96;
+                pricePerLitreFuel = 15.96;
             } 
             // Fuel type is Diesel
             else if (Vehicle.FuelType == FuelType.Diesel) {
-                PricePerLitreFuel = 14.78;
+                pricePerLitreFuel = 14.78;
             } else {
-                PricePerLitreFuel = 15.00;
+                pricePerLitreFuel = 15.00;
             }
-            double litreOfFuel = amount / PricePerLitreFuel;
+            double litreOfFuel = amount / pricePerLitreFuel;
             double kmFromFuel = litreOfFuel / Vehicle.FuelConsumptionPerKm;
             KgCO2 = kmFromFuel * Vehicle.FuelConsumptionPerKm;
             return KgCO2;
