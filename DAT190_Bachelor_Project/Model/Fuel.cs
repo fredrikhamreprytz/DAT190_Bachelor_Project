@@ -4,16 +4,17 @@ namespace DAT190_Bachelor_Project.Model
 {
     public class Fuel : IEmission
     {
+        // Properties
         public Vehicle Vehicle { get; set; }
         public int Id { get; set; }
         public double KgCO2 { get; set; }
         public DateTime Date  { get; set; }
         public SKColor Color { get; set; }
         public string SVGIcon { get; set; }
-        public double pricePerLitreFuel;
+        public double PricePerLitreFuel { get; set; }
 
+        // Constructor
         public Fuel(Vehicle Vehicle)
-
         {
             this.Vehicle = Vehicle;
             this.Color = SKColor.Parse("E894B4");
@@ -31,15 +32,15 @@ namespace DAT190_Bachelor_Project.Model
 
             // Fuel type is Petrol
             if (Vehicle.FuelType == FuelType.Petrol || Vehicle.FuelType == FuelType.PlugInHybrid) {
-                pricePerLitreFuel = 15.96;
+                PricePerLitreFuel = 15.96;
             } 
             // Fuel type is Diesel
             else if (Vehicle.FuelType == FuelType.Diesel) {
-                pricePerLitreFuel = 14.78;
+                PricePerLitreFuel = 14.78;
             } else {
-                pricePerLitreFuel = 15.00;
+                PricePerLitreFuel = 15.00;
             }
-            double litreOfFuel = amount / pricePerLitreFuel;
+            double litreOfFuel = amount / PricePerLitreFuel;
             double kmFromFuel = litreOfFuel / Vehicle.FuelConsumptionPerKm;
             double emission = kmFromFuel * Vehicle.FuelConsumptionPerKm;
             this.KgCO2 = emission;

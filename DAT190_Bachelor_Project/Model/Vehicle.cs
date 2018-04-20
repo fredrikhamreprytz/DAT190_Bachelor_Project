@@ -3,27 +3,30 @@ namespace DAT190_Bachelor_Project.Model
 {
     public class Vehicle
     {
-        private string registrationNumber;
-        private VehicleSize size;
+        // Properties
+        public string RegistrationNumber { get; set; }
+        public VehicleSize Size { get; set; }
         public FuelType FuelType { get; set; }
         public double FuelConsumptionPerKm { get; set; }
-        private double averageCO2EmissionPerKm;
+        public double AverageCO2EmissionPerKm { get; set; }
 
-
+        // Constructor
         public Vehicle(string registrationNumber, VehicleSize size, FuelType fuelType, double consumptionPerKm )
         {
-            this.registrationNumber = registrationNumber;
-            this.size = size;
+            this.RegistrationNumber = registrationNumber;
+            this.Size = size;
             this.FuelType = fuelType;
             this.FuelConsumptionPerKm = consumptionPerKm;
 
             // If vehicle is motorbike, fuel type must be petrol
-            if (size == VehicleSize.Motorbike && FuelType != FuelType.Petrol) {
+            if (size == VehicleSize.Motorbike && FuelType != FuelType.Petrol)
+            {
                 this.FuelType = FuelType.Petrol;
             }
-
+            SetAvergageCO2EmissionPerKm(FuelType, Size);
         }
 
+        // Methods
         public void SetAvergageCO2EmissionPerKm(FuelType type, VehicleSize size) {
 
             // All numbers used in the calculation are provided by the UK Government
@@ -34,20 +37,20 @@ namespace DAT190_Bachelor_Project.Model
                 switch (size)
                 {
                     case VehicleSize.Small:
-                        averageCO2EmissionPerKm = 0.15649;
+                        AverageCO2EmissionPerKm = 0.15649;
                         break;
                     case VehicleSize.Medium:
-                        averageCO2EmissionPerKm = 0.19407;
+                        AverageCO2EmissionPerKm = 0.19407;
                         break;
                     case VehicleSize.Large:
-                        averageCO2EmissionPerKm = 0.28539;
+                        AverageCO2EmissionPerKm = 0.28539;
                         break;
                     case VehicleSize.Motorbike:
-                        averageCO2EmissionPerKm = 0.11662;
+                        AverageCO2EmissionPerKm = 0.11662;
                         break;
                     default:
                         // Default is set to average car value
-                        averageCO2EmissionPerKm = 18568;
+                        AverageCO2EmissionPerKm = 18568;
                         break;
                 }
             } 
@@ -56,17 +59,17 @@ namespace DAT190_Bachelor_Project.Model
                     switch (size)
                     {
                         case VehicleSize.Small:
-                            averageCO2EmissionPerKm = 0.14545;
+                            AverageCO2EmissionPerKm = 0.14545;
                             break;
                         case VehicleSize.Medium:
-                            averageCO2EmissionPerKm = 0.1738;
+                            AverageCO2EmissionPerKm = 0.1738;
                             break;
                         case VehicleSize.Large:
-                            averageCO2EmissionPerKm = 0.21834;
+                            AverageCO2EmissionPerKm = 0.21834;
                             break;
                         default:
                             // Default is set to average car value
-                            averageCO2EmissionPerKm = 17887;
+                            AverageCO2EmissionPerKm = 17887;
                             break;
                 }
             }
@@ -75,23 +78,20 @@ namespace DAT190_Bachelor_Project.Model
                 switch (size)
                 {
                     case VehicleSize.Small:
-                        averageCO2EmissionPerKm = 0.10973;
+                        AverageCO2EmissionPerKm = 0.10973;
                         break;
                     case VehicleSize.Medium:
-                        averageCO2EmissionPerKm = 0.11243;
+                        AverageCO2EmissionPerKm = 0.11243;
                         break;
                     case VehicleSize.Large:
-                        averageCO2EmissionPerKm = 0.13052;
+                        AverageCO2EmissionPerKm = 0.13052;
                         break;
                     default:
                         // Default is set to average car value
-                        averageCO2EmissionPerKm = 11659;
+                        AverageCO2EmissionPerKm = 11659;
                         break;
                 }
             }
-        }
-        public double GetAverageCO2EmissionPerKm() {
-            return averageCO2EmissionPerKm;
         }
 
     }
