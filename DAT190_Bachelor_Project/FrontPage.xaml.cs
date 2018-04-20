@@ -14,13 +14,27 @@ namespace DAT190_Bachelor_Project
     {
 
         OBPUtil obp;
-        CarbonFootprint co2;
+        User dummyUser;
 
         public FrontPage()
         {
             InitializeComponent();
 
-            co2 = new CarbonFootprint();
+            // Instantiate dummy user
+            dummyUser = new User();
+            dummyUser.FirstName = "Knut";
+
+            // Create dummy vehicle
+            Vehicle dummyVehicle = new Vehicle("AA 12345", VehicleSize.Medium, FuelType.Petrol, 0.7);
+            dummyUser.Vehicle = dummyVehicle;
+
+            CarbonFootprint carbonFootprint = new CarbonFootprint();
+
+            // Setting dependencies
+            dummyUser.CarbonFootprint = carbonFootprint;
+            dummyUser.CarbonFootprint.User = dummyUser;
+            // Update footprint with dummy data
+            dummyUser.CarbonFootprint.UpdateFootprint();
 
             obp = new OBPUtil("oob", "0yao55bdkuhka0g0ocxpsklwshfx5bh2jd3rqdbz", "qfwzyqdhmm4xz1zmqobfboa4sofnxhkoydgjsbjs");
             obp.getRequestToken(FinishWebRequest);
@@ -68,7 +82,7 @@ namespace DAT190_Bachelor_Project
 
 
 
-            EmissionsCakeView emissionsCake = new EmissionsCakeView(32, 6, 33, height, width, e, co2);
+            EmissionsCakeView emissionsCake = new EmissionsCakeView(32, 6, 33, height, width, e, dummyUser.CarbonFootprint);
             emissionsCake.DrawCake();
             emissionsCake.DrawCenterHole();
             emissionsCake.DrawText();
