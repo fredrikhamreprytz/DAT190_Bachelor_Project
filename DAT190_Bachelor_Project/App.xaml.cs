@@ -1,4 +1,6 @@
 ﻿using Xamarin.Forms;
+using System.Reflection;
+using PCLAppConfig;
 
 namespace DAT190_Bachelor_Project
 {
@@ -7,6 +9,8 @@ namespace DAT190_Bachelor_Project
         public App()
         {
             InitializeComponent();
+            Assembly assembly = typeof(App).GetTypeInfo().Assembly;
+            ConfigurationManager.Initialise(assembly.GetManifestResourceStream("DAT190_Bachelor_Project.App.config"));
 
             MainPage = new FrontPage();
         }

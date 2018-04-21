@@ -7,6 +7,7 @@ using DAT190_Bachelor_Project.Model;
 using DAT190_Bachelor_Project.View;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using PCLAppConfig;
 
 namespace DAT190_Bachelor_Project
 {
@@ -36,7 +37,10 @@ namespace DAT190_Bachelor_Project
             // Update footprint with dummy data
             dummyUser.CarbonFootprint.UpdateFootprint();
 
-            obp = new OBPUtil("oob", "0yao55bdkuhka0g0ocxpsklwshfx5bh2jd3rqdbz", "qfwzyqdhmm4xz1zmqobfboa4sofnxhkoydgjsbjs");
+            string OBPDevKey = ConfigurationManager.AppSettings["OBPDevKey"];
+            string OBPDevSecret = ConfigurationManager.AppSettings["OBPDevSecret"];
+
+            obp = new OBPUtil("oob", OBPDevKey, OBPDevSecret);
             obp.getRequestToken(FinishWebRequest);
 
         }
@@ -79,8 +83,6 @@ namespace DAT190_Bachelor_Project
 
             float width = (float)carconFootprintCanvas.Width;
             float height = (float)carconFootprintCanvas.Height;
-
-
 
             EmissionsCakeView emissionsCake = new EmissionsCakeView(32, 6, 33, height, width, e, dummyUser.CarbonFootprint);
             emissionsCake.DrawCake();
