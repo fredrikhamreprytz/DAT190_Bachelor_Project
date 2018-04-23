@@ -81,8 +81,8 @@ namespace DAT190_Bachelor_Project
         private void OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
 
-            float width = (float)carconFootprintCanvas.Width;
-            float height = (float)carconFootprintCanvas.Height;
+            float width = (float)carbonFootprintCanvas.Width;
+            float height = (float)carbonFootprintCanvas.Height;
 
             EmissionsCakeView emissionsCake = new EmissionsCakeView(32, 6, 33, height, width, e, dummyUser.CarbonFootprint);
             emissionsCake.DrawCake();

@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAT190_Bachelor_Project.iOS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAT190_Bachelor_Project.Droid", "Droid\DAT190_Bachelor_Project.Droid.csproj", "{7C2AA41E-2159-454F-BE0C-054707F4EF08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAT190_Bachelor_Project.UITests", "UITests\DAT190_Bachelor_Project.UITests.csproj", "{4D4A305F-E534-447D-A5CF-79C97A95122D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A2850816-06DE-42FD-94B3-690728930882}"
 EndProject
 Global
@@ -57,17 +55,5 @@ Global
 		{7C2AA41E-2159-454F-BE0C-054707F4EF08}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{7C2AA41E-2159-454F-BE0C-054707F4EF08}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{7C2AA41E-2159-454F-BE0C-054707F4EF08}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Release|iPhone.Build.0 = Release|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{4D4A305F-E534-447D-A5CF-79C97A95122D}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
