@@ -12,7 +12,7 @@ namespace DAT190_Bachelor_Project.Model
         string SVGIcon { get; set; }
 
         // Methods
-        double CalculateCO2(double Amount);
+        double CalculateCO2(double amount);
 
     }
 }

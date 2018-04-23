@@ -44,8 +44,8 @@ namespace DAT190_Bachelor_Project.Model
 
         // Methods
         public double CalculateCO2(double amount)
-        {             double km = amount / pricePerKm;              // Short og long haul flight             if(km < shortHaulTreshold) {                 a = 0.0000387871;                 b = 2.9866;                 c = 1263.42;             } else if (km > longHaulTreshold) {                 a = 0.000134576;                 b = 6.1798;                 c = 3446.20;             } else {                 a = (0.0000387871 + 0.000134576) / 2;                 b = (2.9866 + 6.1798) / 2;                 c = (1263.42 + 3446.20) / 2;             }             double Emission = ((a * Math.Pow(km + dc, 2) + b * (km + dc) + c) / (s * plf)) * cf * cw * (ef * multiplier + preProduction);
-            this.KgCO2 = Emission;             return Emission;
+        {             double km = amount / pricePerKm;              // Short og long haul flight             if(km < shortHaulTreshold) {                 a = 0.0000387871;                 b = 2.9866;                 c = 1263.42;             } else if (km > longHaulTreshold) {                 a = 0.000134576;                 b = 6.1798;                 c = 3446.20;             } else {                 a = (0.0000387871 + 0.000134576) / 2;                 b = (2.9866 + 6.1798) / 2;                 c = (1263.42 + 3446.20) / 2;             }             double emission = ((a * Math.Pow(km + dc, 2) + b * (km + dc) + c) / (s * plf)) * cf * cw * (ef * multiplier + preProduction);
+            this.KgCO2 = emission;             return emission;
         }
     }
 }

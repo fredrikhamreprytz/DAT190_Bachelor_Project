@@ -7,9 +7,9 @@ namespace DAT190_Bachelor_Project.Model
 
         // Properties
         public User User { get; set; }
-        public DateTime LastUpdate { get; private set;  }
-        public IEmission[] emissions { private set; get; }
-        public double Flight { get; private set;  }
+        public DateTime LastUpdate { get; private set; }
+        public IEmission[] Emissions { private set; get; }
+        public double Flight { get; private set; }
         public double Fuel { get; private set; }
         public double Household { get; private set; }
 
@@ -39,7 +39,7 @@ namespace DAT190_Bachelor_Project.Model
             // 1000 NOK as example of montly electricity bill
             householdEmissions.CalculateCO2(1000);
 
-            emissions = new IEmission[]
+            Emissions = new IEmission[]
             {
                 fuelEmissions,
                 flightEmissions,

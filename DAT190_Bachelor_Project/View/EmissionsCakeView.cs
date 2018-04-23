@@ -33,7 +33,7 @@ namespace DAT190_Bachelor_Project.View
             this.canvasWidth = canvasWidth;
             this.canvas = e.Surface.Canvas;
             this.center = new SKPoint(canvasWidth / 2, canvasHeight / 2);
-            this.Emissions = Co2.emissions;
+            this.Emissions = Co2.Emissions;
 
             var scale = (float)(e.Info.Width / canvasWidth);
             canvas.Scale(scale);
