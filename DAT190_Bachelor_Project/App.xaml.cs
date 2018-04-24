@@ -19,17 +19,17 @@ namespace DAT190_Bachelor_Project
             MainPage = new FrontPage();
         }
 
-        //public static UserDatabase Database
-        //{
-        //    get
-        //    {
-        //        if (database == null)
-        //        {
-        //            database = new UserDatabase(DependencyService.Get<ISQLite>().GetLocalFilePath("User.db3"));
-        //        }
-        //        return database;
-        //    }
-        //}
+        public static UserDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new UserDatabase(DependencyService.Get<ISQLite>().GetLocalFilePath("User.db3"));
+                }
+                return database;
+            }
+        }
 
         protected override void OnStart()
         {

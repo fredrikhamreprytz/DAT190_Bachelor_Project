@@ -25,6 +25,8 @@ namespace DAT190_Bachelor_Project
             dummyUser = new User();
             dummyUser.FirstName = "Knut";
             dummyUser.Email = "knut@statoil.com";
+            dummyUser.LastName = "Helland";
+            dummyUser.Password = "passord";
 
             // Create dummy vehicle
             Vehicle dummyVehicle = new Vehicle("AA 12345", VehicleSize.Medium, FuelType.Petrol, 0.7);
@@ -45,7 +47,7 @@ namespace DAT190_Bachelor_Project
             obp.getRequestToken(FinishWebRequest);
 
             // Saving to database
-            //App.Database.SaveUserAsync(dummyUser);
+            App.Database.SaveUserAsync(dummyUser);
 
         }
 
