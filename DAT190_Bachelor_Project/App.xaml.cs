@@ -1,11 +1,15 @@
 ﻿using Xamarin.Forms;
 using System.Reflection;
 using PCLAppConfig;
+using DAT190_Bachelor_Project.Model;
+using DAT190_Bachelor_Project.Data;
 
 namespace DAT190_Bachelor_Project
 {
     public partial class App : Application
     {
+        static UserDatabase database;
+
         public App()
         {
             InitializeComponent();
@@ -14,6 +18,18 @@ namespace DAT190_Bachelor_Project
 
             MainPage = new FrontPage();
         }
+
+        //public static UserDatabase Database
+        //{
+        //    get
+        //    {
+        //        if (database == null)
+        //        {
+        //            database = new UserDatabase(DependencyService.Get<ISQLite>().GetLocalFilePath("User.db3"));
+        //        }
+        //        return database;
+        //    }
+        //}
 
         protected override void OnStart()
         {

@@ -55,6 +55,10 @@
     <Compile Include="Model\CarbonFootprint.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Data\ISQLite.cs" />
+    <Compile Include="Model\UserDatabase.cs" />
+    <Compile Include="Model\CarbonFootprintDatabase.cs" />
+    <Compile Include="Model\FlightDatabase.cs" />
+    <Compile Include="Model\FuelDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
