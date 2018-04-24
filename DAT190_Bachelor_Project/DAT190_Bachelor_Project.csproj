@@ -60,6 +60,7 @@
     <Compile Include="Model\FlightDatabase.cs" />
     <Compile Include="Model\FuelDatabase.cs" />
     <Compile Include="Model\VehicleDatabase.cs" />
+    <Compile Include="Model\HouseholdDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
