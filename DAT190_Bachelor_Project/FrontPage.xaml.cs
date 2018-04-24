@@ -46,8 +46,10 @@ namespace DAT190_Bachelor_Project
             obp = new OBPUtil("oob", OBPDevKey, OBPDevSecret);
             obp.getRequestToken(FinishWebRequest);
 
-            // Saving to database
-            App.Database.SaveUserAsync(dummyUser);
+            dummyUser.SocialSecurityNr = "";
+            dummyUser.ClientId = "";
+            dummyUser.ClientSecret = "";
+            Save();
 
         }
 
@@ -97,6 +99,12 @@ namespace DAT190_Bachelor_Project
             emissionsCake.DrawDots();
             emissionsCake.DrawIcons();
 
+        }
+
+        private async void Save()
+        {
+            // Saving to database
+            await App.Database.SaveUserAsync(dummyUser);
         }
         
     }

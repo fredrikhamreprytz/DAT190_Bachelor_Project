@@ -11,15 +11,21 @@ namespace DAT190_Bachelor_Project.iOS.Data
     {
         public string GetLocalFilePath(string fileName)
         {
+            //    string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            //    string libFolder = Path.Combine(docFolder, "..", "Library", "Databases");
+
+            //    if (!Directory.Exists(libFolder))
+            //    {
+            //        Directory.CreateDirectory(libFolder);
+            //    }
+
+            //    return Path.Combine(libFolder, fileName);
+            //}
             string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            string libFolder = Path.Combine(docFolder, "..", "Library", "Databases");
+            string libraryPath = Path.Combine(docFolder, "..", "Library");
+            string path = Path.Combine(libraryPath, fileName);
 
-            if (!Directory.Exists(libFolder))
-            {
-                Directory.CreateDirectory(libFolder);
-            }
-
-            return Path.Combine(libFolder, fileName);
+            return path;
         }
     }
 }
