@@ -1,11 +1,16 @@
 ﻿using System;
+using SQLite;
+
 namespace DAT190_Bachelor_Project.Model
 {
     public class Vehicle
     {
         // Properties
+        [PrimaryKey]
         public string RegistrationNumber { get; set; }
+        [Ignore]
         public VehicleSize Size { get; set; }
+        [Ignore]
         public FuelType FuelType { get; set; }
         public double FuelConsumptionPerKm { get; set; }
         public double AverageCO2EmissionPerKm { get; set; }
@@ -24,6 +29,11 @@ namespace DAT190_Bachelor_Project.Model
                 this.FuelType = FuelType.Petrol;
             }
             SetAvergageCO2EmissionPerKm(FuelType, Size);
+        }
+
+        // Empty constructor
+        public Vehicle()
+        {
         }
 
         // Methods

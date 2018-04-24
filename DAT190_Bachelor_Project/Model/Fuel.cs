@@ -28,6 +28,7 @@ namespace DAT190_Bachelor_Project.Model
             this.KgCO2 = CalculateCO2(1234);
         }
 
+        // Empty constructor
         public Fuel()
         {
         }

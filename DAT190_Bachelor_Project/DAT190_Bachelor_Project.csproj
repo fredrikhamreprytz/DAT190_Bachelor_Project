@@ -59,6 +59,7 @@
     <Compile Include="Model\CarbonFootprintDatabase.cs" />
     <Compile Include="Model\FlightDatabase.cs" />
     <Compile Include="Model\FuelDatabase.cs" />
+    <Compile Include="Model\VehicleDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
