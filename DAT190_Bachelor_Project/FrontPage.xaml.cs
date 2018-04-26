@@ -8,6 +8,7 @@ using DAT190_Bachelor_Project.View;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using PCLAppConfig;
+using DAT190_Bachelor_Project.Data;
 
 namespace DAT190_Bachelor_Project
 {
@@ -16,6 +17,7 @@ namespace DAT190_Bachelor_Project
 
         OBPUtil obp;
         User dummyUser;
+        RestService restService = new RestService();
 
         public FrontPage()
         {
@@ -49,8 +51,9 @@ namespace DAT190_Bachelor_Project
             dummyUser.SocialSecurityNr = "";
             dummyUser.ClientId = "";
             dummyUser.ClientSecret = "";
-            Save();
 
+            // Save user to RESTapi
+            // restService.SaveUserAsync(dummyUser);
         }
 
         // ** CALLBACK METODE
@@ -101,11 +104,11 @@ namespace DAT190_Bachelor_Project
 
         }
 
-        private async void Save()
-        {
-            // Saving to database
-            await App.Database.SaveUserAsync(dummyUser);
-        }
+        //private async void Save()
+        //{
+        //    // Saving to database
+        //    await App.Database.SaveUserAsync(dummyUser);
+        //}
         
     }
 

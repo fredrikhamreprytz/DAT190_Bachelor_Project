@@ -61,6 +61,7 @@
     <Compile Include="Model\FuelDatabase.cs" />
     <Compile Include="Model\VehicleDatabase.cs" />
     <Compile Include="Model\HouseholdDatabase.cs" />
+    <Compile Include="Data\RestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
