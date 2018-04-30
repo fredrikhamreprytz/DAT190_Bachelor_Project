@@ -9,6 +9,8 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using PCLAppConfig;
 using DAT190_Bachelor_Project.Data;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DAT190_Bachelor_Project
 {
@@ -35,6 +37,8 @@ namespace DAT190_Bachelor_Project
             dummyUser.Vehicle = dummyVehicle;
 
             CarbonFootprint carbonFootprint = new CarbonFootprint();
+
+            titleLabel1.Text = dummyUser.FirstName;
 
             // Setting dependencies
             dummyUser.CarbonFootprint = carbonFootprint;
@@ -95,7 +99,7 @@ namespace DAT190_Bachelor_Project
             float width = (float)carbonFootprintCanvas.Width;
             float height = (float)carbonFootprintCanvas.Height;
 
-            EmissionsCakeView emissionsCake = new EmissionsCakeView(32, 6, 33, height, width, e, dummyUser.CarbonFootprint);
+            EmissionsCakePainter emissionsCake = new EmissionsCakePainter(32, 6, 33, height, width, e, dummyUser.CarbonFootprint);
             emissionsCake.DrawCake();
             emissionsCake.DrawCenterHole();
             emissionsCake.DrawText();
@@ -109,8 +113,14 @@ namespace DAT190_Bachelor_Project
         //    // Saving to database
         //    await App.Database.SaveUserAsync(dummyUser);
         //}
+
+
         
-    }
+        void Handle_Touch(object sender, SkiaSharp.Views.Forms.SKTouchEventArgs e)
+                {
+                    throw new NotImplementedException();
+                }
+            }
 
 
 }

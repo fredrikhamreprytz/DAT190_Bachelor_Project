@@ -16,8 +16,14 @@
             <Label x:Name="titleLabel2" Text="Ditt CO2 avtrykk hittil i år er:" FontSize="40" HorizontalTextAlignment="Center" TextColor="Gray" />
         </StackLayout>
 
-        <skia:SKCanvasView x:Name="carbonFootprintCanvas" AutomationId="carbonFootprintCanvas" PaintSurface="OnPaintSurface" HeightRequest="400"/>
-        
+        <skia:SKCanvasView 
+            x:Name="carbonFootprintCanvas" 
+            AutomationId="carbonFootprintCanvas" 
+            PaintSurface="OnPaintSurface" 
+            HeightRequest="400" 
+            EnableTouchEvents="true"
+            Touch="Handle_Touch"/>
+
     </StackLayout><!-- End Main Stack Layout -->
     
 </ContentPage>

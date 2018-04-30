@@ -32,5 +32,11 @@ namespace UITests
             AppResult[] results = app.WaitForElement(c => c.Marked("carbonFootprintCanvas"));
             Assert.IsNotEmpty(results);
         }
+
+        [Test]
+        public void WelcomeLabelDisplaysUsersFirstname()
+        {
+            
+        }
     }
 }

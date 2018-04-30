@@ -9,7 +9,7 @@ namespace DAT190_Bachelor_Project.View
     // Test[] erstattes av CO2Emissions object som inneholder en instans av Fuel, Flight, House etc..
     // For at denne blir enklest mulig bør IEmission implementasjoner ha en liste med rådata, typ en samling av floats?
     // og ha en property som er den samlede utregningen av disse (TotalFuelEmissionsInKg) elns.
-    public class EmissionsCakeView
+    public class EmissionsCakePainter
     {
         float cakeRadius;
         float iconRadius;
@@ -22,7 +22,7 @@ namespace DAT190_Bachelor_Project.View
         SKPoint center;
         IEmission[] Emissions;
 
-        public EmissionsCakeView(float iconRadius, float iconSpacing, float thickness, float canvasHeight, float canvasWidth, SKPaintSurfaceEventArgs e, CarbonFootprint Co2) 
+        public EmissionsCakePainter(float iconRadius, float iconSpacing, float thickness, float canvasHeight, float canvasWidth, SKPaintSurfaceEventArgs e, CarbonFootprint Co2) 
         {
             
             this.cakeRadius = Math.Min(canvasWidth / 2, canvasHeight / 2) - 1.75f * iconRadius;
