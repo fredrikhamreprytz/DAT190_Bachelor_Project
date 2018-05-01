@@ -12,12 +12,14 @@ namespace DAT190_Bachelor_Project.View
     public class EmissionsCakePainter
     {
         float cakeRadius;
-        float iconRadius;
+        public float iconRadius { get; set; }
+        public float scale { get; set; }
         float canvasHeight;
         float canvasWidth;
         float totalValues;
         float thickness;
         float iconSpacing;
+        public SKPoint[] IconCenterList { get; set; }
         SKCanvas canvas;
         SKPoint center;
         IEmission[] Emissions;
@@ -35,7 +37,7 @@ namespace DAT190_Bachelor_Project.View
             this.center = new SKPoint(canvasWidth / 2, canvasHeight / 2);
             this.Emissions = Co2.Emissions;
 
-            var scale = (float)(e.Info.Width / canvasWidth);
+            scale = (float)(e.Info.Width / canvasWidth);
             canvas.Scale(scale);
             canvas.Clear();
 
@@ -44,21 +46,16 @@ namespace DAT190_Bachelor_Project.View
                 this.totalValues += (float)Emission.KgCO2;
             }
 
+            CalculateCoordinates();
+
         }
 
-        public void DrawIcons() {
-            
+        private void CalculateCoordinates() {
+
+            this.IconCenterList = new SKPoint[this.Emissions.Length];
             float startAngle = 0;
+            int i = 0;
 
-            // Define paint
-            SKPaint paint = new SKPaint
-            {
-                Style = SKPaintStyle.Fill,
-                Color = SKColors.White,
-                IsAntialias = true
-            };
-
-            // Loop through all emission categories
             foreach (IEmission Emission in Emissions)
             {
                 float sweepAngle = 360f * (float)Emission.KgCO2 / totalValues;
@@ -67,28 +64,73 @@ namespace DAT190_Bachelor_Project.View
                 float offsetAngle = startAngle + (sweepAngle / 2);
                 float offsetX = (cakeRadius + iconSpacing) * (float)Math.Cos(offsetAngle * Math.PI * 2 / 360);
                 float offsetY = (cakeRadius + iconSpacing) * (float)Math.Sin(offsetAngle * Math.PI * 2 / 360);
-
-                // Create path from SVG
-                SKPath icon = SKPath.ParseSvgPathData(Emission.SVGIcon);
-
-                // Scale down to fit inside of "dot"
-                SKRect iconBounds = new SKRect();
-                icon.GetBounds(out iconBounds);
-                float iconMax = Math.Max(iconBounds.Width, iconBounds.Height);
-                float iconWidth = (float)Math.Sqrt(2 * Math.Pow(iconRadius, 2));
-                var iconScale = iconWidth / iconMax;
-                SKMatrix scaleMatrix = SKMatrix.MakeScale(iconScale, iconScale);
-                icon.Transform(scaleMatrix);
-
-                // Move icon to center of "dot"
-                icon.GetBounds(out iconBounds);
-                SKMatrix translate = SKMatrix.MakeTranslation(center.X + offsetX - iconBounds.Width / 2, center.Y + offsetY - iconBounds.Height / 2);
-                icon.Transform(translate);
-
-                // Draw path
-                canvas.DrawPath(icon, paint);
-
+                IconCenterList[i] = new SKPoint(center.X + offsetX, center.Y + offsetY);
                 startAngle += sweepAngle;
+                i++;
+            }
+        }
+
+        public void DrawIcons() {
+
+
+            // Define paint
+            SKPaint iconPaint = new SKPaint
+            {
+                Style = SKPaintStyle.Fill,
+                Color = SKColors.White,
+                IsAntialias = true
+            };
+
+            SKPaint backgroundPaint = new SKPaint
+            {
+                Style = SKPaintStyle.Fill,
+                Color = SKColors.White,
+                IsAntialias = true
+            };
+
+            int i = 0;
+
+            // Loop through all emission categories
+            foreach (IEmission Emission in Emissions)
+            {
+
+                if (Emission.KgCO2/totalValues > 0.01) 
+                {
+                    SKPoint iconCenter = IconCenterList[i];
+
+                    // Define drop shadow toward center of cake
+                    backgroundPaint.ImageFilter = SKImageFilter.CreateDropShadow(-(iconCenter.X - center.X) / 12, -(iconCenter.Y - center.Y) / 12, 9, 9, SKColors.Black.WithAlpha(50), SKDropShadowImageFilterShadowMode.DrawShadowAndForeground);
+                    backgroundPaint.Color = Emission.Color;
+
+                    // Draw path
+                    canvas.Save();
+                    canvas.DrawCircle(iconCenter, iconRadius, backgroundPaint);
+                    canvas.Restore();
+
+                    // Create path from SVG
+                    SKPath icon = SKPath.ParseSvgPathData(Emission.SVGIcon);
+
+                    // Scale down to fit inside of "dot"
+                    SKRect iconBounds = new SKRect();
+                    icon.GetBounds(out iconBounds);
+                    float iconMax = Math.Max(iconBounds.Width, iconBounds.Height);
+                    float iconWidth = (float)Math.Sqrt(2 * Math.Pow(iconRadius, 2));
+                    var iconScale = iconWidth / iconMax;
+                    SKMatrix scaleMatrix = SKMatrix.MakeScale(iconScale, iconScale);
+                    icon.Transform(scaleMatrix);
+
+                    // Move icon to center of "dot"
+                    icon.GetBounds(out iconBounds);
+                    SKMatrix translate = SKMatrix.MakeTranslation(iconCenter.X - iconBounds.Width / 2, iconCenter.Y - iconBounds.Height / 2);
+                    icon.Transform(translate);
+
+                    // Draw path
+                    canvas.DrawPath(icon, iconPaint);
+
+                }
+
+
+                i++;
 
             }
 
@@ -170,42 +212,8 @@ namespace DAT190_Bachelor_Project.View
             }
         }
 
-        public void DrawDots() {
-            
-            float startAngle = 0;
 
-            // Define paint
-            SKPaint paint = new SKPaint
-            {
-                Style = SKPaintStyle.Fill,
-                IsAntialias = true
-            };
 
-            // Loop through emission categories
-            foreach (IEmission Emission in Emissions)
-            {
-                
-                float sweepAngle = 360f * (float)Emission.KgCO2 / totalValues;
 
-                // Calculate coordinates for dots
-                float offsetAngle = startAngle + (sweepAngle / 2);
-                float offsetX = (cakeRadius + iconSpacing) * (float)Math.Cos(offsetAngle * Math.PI * 2 / 360);
-                float offsetY = (cakeRadius + iconSpacing) * (float)Math.Sin(offsetAngle * Math.PI * 2 / 360);
-                SKPoint iconCenter = center;
-                iconCenter.X += offsetX;
-                iconCenter.Y += offsetY;
-
-                // Define drop shadow toward center of cake
-                paint.ImageFilter = SKImageFilter.CreateDropShadow(-offsetX / 12, -offsetY / 12, 9, 9, SKColors.Black.WithAlpha(50), SKDropShadowImageFilterShadowMode.DrawShadowAndForeground);
-                paint.Color = Emission.Color;
-
-                // Draw path
-                canvas.Save();
-                canvas.DrawCircle(iconCenter, iconRadius, paint);
-                canvas.Restore();
-
-                startAngle += sweepAngle;
-            }
-        }
     }
 }

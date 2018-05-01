@@ -19,7 +19,9 @@ namespace DAT190_Bachelor_Project
 
         OBPUtil obp;
         User dummyUser;
+        EmissionsCakePainter cakePainter;
         RestService restService = new RestService();
+        CarbonFootprint carbonFootprint;
 
         public FrontPage()
         {
@@ -36,7 +38,7 @@ namespace DAT190_Bachelor_Project
             Vehicle dummyVehicle = new Vehicle("AA 12345", VehicleSize.Medium, FuelType.Petrol, 0.7);
             dummyUser.Vehicle = dummyVehicle;
 
-            CarbonFootprint carbonFootprint = new CarbonFootprint();
+            carbonFootprint = new CarbonFootprint();
 
             titleLabel1.Text = dummyUser.FirstName;
 
@@ -76,16 +78,16 @@ namespace DAT190_Bachelor_Project
             Uri uri = new Uri("https://apisandbox.openbankproject.com/oauth/authorize?" + oauth_token);
             System.Diagnostics.Debug.WriteLine(uri.AbsoluteUri);
 
-            ShowToast(responseFromServer);
+            ShowToast("OBP response: ", responseFromServer);
         }
 
-        private void ShowToast(string text)
+        private void ShowToast(string header, string text)
         {
             var notificator = DependencyService.Get<IToastNotificator>();
 
             var options = new NotificationOptions()
             {
-                Title = "Open Bank Project Response:",
+                Title = header,
                 Description = text,
                 IsClickable = true
             };
@@ -98,13 +100,13 @@ namespace DAT190_Bachelor_Project
 
             float width = (float)carbonFootprintCanvas.Width;
             float height = (float)carbonFootprintCanvas.Height;
+            cakePainter = new EmissionsCakePainter(32, 6, 33, height, width, e, dummyUser.CarbonFootprint);
 
-            EmissionsCakePainter emissionsCake = new EmissionsCakePainter(32, 6, 33, height, width, e, dummyUser.CarbonFootprint);
-            emissionsCake.DrawCake();
-            emissionsCake.DrawCenterHole();
-            emissionsCake.DrawText();
-            emissionsCake.DrawDots();
-            emissionsCake.DrawIcons();
+            cakePainter.DrawCake();
+            cakePainter.DrawCenterHole();
+            cakePainter.DrawText();
+            cakePainter.DrawIcons();
+
 
         }
 
@@ -115,12 +117,41 @@ namespace DAT190_Bachelor_Project
         //}
 
 
-        
+
         void Handle_Touch(object sender, SkiaSharp.Views.Forms.SKTouchEventArgs e)
+        {
+            
+            SKPoint touchLocation = e.Location;
+            IEmission emissionClicked = null;
+            int i = 0;
+            foreach (SKPoint iconCenter in cakePainter.IconCenterList)
+            {
+                float minX = iconCenter.X - cakePainter.iconRadius;
+                float maxX = iconCenter.X + cakePainter.iconRadius;
+                float minY = iconCenter.Y - cakePainter.iconRadius;
+                float maxY = iconCenter.Y + cakePainter.iconRadius;
+
+                minX *= cakePainter.scale;
+                maxX *= cakePainter.scale;
+                minY *= cakePainter.scale;
+                maxY *= cakePainter.scale;
+
+                bool insideX = touchLocation.X > minX && touchLocation.X < maxX;
+                bool insideY = touchLocation.Y > minY && touchLocation.Y < maxY;
+
+                if (insideX && insideY)
                 {
-                    throw new NotImplementedException();
+                    emissionClicked = carbonFootprint.Emissions[i];
                 }
+
+                i++;
             }
+
+            if (emissionClicked != null) {
+                ShowToast(emissionClicked.Color.ToString(), ("Kg CO2: " + emissionClicked.KgCO2));
+            }
+        }
+    }
 
 
 }
