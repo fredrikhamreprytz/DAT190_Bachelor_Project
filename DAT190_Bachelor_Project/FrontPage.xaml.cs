@@ -11,6 +11,7 @@ using PCLAppConfig;
 using DAT190_Bachelor_Project.Data;
 using System.Collections.Generic;
 using System.Linq;
+using Rg.Plugins.Popup.Extensions;
 
 namespace DAT190_Bachelor_Project
 {
@@ -142,14 +143,21 @@ namespace DAT190_Bachelor_Project
                 if (insideX && insideY)
                 {
                     emissionClicked = carbonFootprint.Emissions[i];
+
                 }
 
                 i++;
             }
 
             if (emissionClicked != null) {
-                ShowToast(emissionClicked.Color.ToString(), ("Kg CO2: " + emissionClicked.KgCO2));
+                OpenEmissionDetailsPopupPage(emissionClicked);
             }
+        }
+
+        private async void OpenEmissionDetailsPopupPage(IEmission emission)
+        {
+            var page = new EmissionDetailsPopupPage(emission);
+            await Navigation.PushPopupAsync(page);
         }
     }
 

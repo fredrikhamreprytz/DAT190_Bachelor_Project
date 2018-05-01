@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             x:Class="DAT190_Bachelor_Project.EmissionDetailsPopupPage">
+
+<StackLayout 
+        x:Name="stackLayout"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        Padding="20, 20, 20, 20"
+        Margin="20, 20, 20, 20">
+        <skia:SKCanvasView 
+            x:Name="emissionDetailsIconCanvas" 
+            AutomationId="emissionDetailsIconCanvas" 
+            PaintSurface="OnPaintPopup" 
+            HeightRequest="30" />
+        <Label x:Name="emissionAmountLabel" Text="Test"/>
+        <Label x:Name="emissionTextLabel" Text=""/>
+        <Button Text="Les mer om hvordan du kan redusere dine transportutslipp" />
+    </StackLayout>
+</pages:PopupPage>

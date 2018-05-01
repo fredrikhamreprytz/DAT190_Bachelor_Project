@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="FrontPageTests.cs" />
     <Compile Include="AppInitializer.cs" />
+    <Compile Include="EmissionDetailsPopupPageTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iOS\DAT190_Bachelor_Project.iOS.csproj">

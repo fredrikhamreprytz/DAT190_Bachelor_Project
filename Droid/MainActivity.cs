@@ -25,7 +25,7 @@ namespace DAT190_Bachelor_Project.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             DependencyService.Register<ToastNotification>(); // Register your dependency
             ToastNotification.Init(this);
-
+            Rg.Plugins.Popup.Popup.Init(this, bundle);
             LoadApplication(new App());
         }
     }

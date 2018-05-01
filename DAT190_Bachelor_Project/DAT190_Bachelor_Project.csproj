@@ -34,6 +34,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="App.config" />
+    <EmbeddedResource Include="EmissionDetailsPopupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -62,6 +66,9 @@
     <Compile Include="Model\VehicleDatabase.cs" />
     <Compile Include="Model\HouseholdDatabase.cs" />
     <Compile Include="Data\RestService.cs" />
+    <Compile Include="EmissionDetailsPopupPage.xaml.cs">
+      <DependentUpon>EmissionDetailsPopupPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
@@ -139,6 +146,9 @@
     </Reference>
     <Reference Include="IdentityModel.Portable">
       <HintPath>..\packages\IdentityModel.1.0.0\lib\portable-net45+win8+wpa81\IdentityModel.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup">
+      <HintPath>..\packages\Rg.Plugins.Popup.1.1.4.154-pre\lib\netstandard1.0\Rg.Plugins.Popup.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
