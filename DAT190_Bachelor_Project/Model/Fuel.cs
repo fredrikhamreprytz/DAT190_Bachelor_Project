@@ -13,17 +13,19 @@ namespace DAT190_Bachelor_Project.Model
         [Ignore]
         public Vehicle Vehicle { get; set; }
         public double KgCO2 { get; set; }
-        public DateTime Date  { get; set; }
+        public DateTime Date { get; set; }
         [Ignore]
         public SKColor Color { get; set; }
         public string SVGIcon { get; set; }
         public double PricePerLitreFuel { get; set; }
+        public string Name { get; set; }
 
         // Constructor
         public Fuel(Vehicle vehicle)
         {
             this.Vehicle = vehicle;
             this.Color = SKColor.Parse("E894B4");
+            this.Name = "Transportutslipp";
             this.SVGIcon = "M0,57 L37.5,57 L83.5,0 L184.5,0 L228.5,56 C228.5,56 289.5,52 295.5,97 L296.5,136.5 L261.5,136.5 C258,93 190,88 184.5,136.5 L113.5,136.5 C113.5,98.5 41,84.5 35.5,136.5 C35.5,136.5 35.5,138.5 0,136.5 L0,57 M67,57 L93,23 L126,23 L125.5,57 L67,57 M149,57 L148.5,23 L173.5,23 L200.5,57 L149,57 M48,142.5 C48,128 60,116.5 74,116.5 C88.5,116.5 100,128 100,142.5 C100,156.5 88.5,168.5 74,168.5 C60,168.5 48,156.5 48,142.5 M196.5,142.5 C196.5,128 208,116.5 222.5,116.5 C237,116.5 248.5,128 248.5,142.5 C248.5,156.5 237,168.5 222.5,168.5 C208,168.5 196.5,156.5 196.5,142.5 Z";
             this.KgCO2 = CalculateCO2(1234);
         }
@@ -42,13 +44,17 @@ namespace DAT190_Bachelor_Project.Model
             // Price is in NOK
 
             // Fuel type is Petrol
-            if (Vehicle.FuelType == FuelType.Petrol || Vehicle.FuelType == FuelType.PlugInHybrid) {
+            if (Vehicle.FuelType == FuelType.Petrol || Vehicle.FuelType == FuelType.PlugInHybrid)
+            {
                 PricePerLitreFuel = 15.96;
-            } 
+            }
             // Fuel type is Diesel
-            else if (Vehicle.FuelType == FuelType.Diesel) {
+            else if (Vehicle.FuelType == FuelType.Diesel)
+            {
                 PricePerLitreFuel = 14.78;
-            } else {
+            }
+            else
+            {
                 PricePerLitreFuel = 15.00;
             }
             double litreOfFuel = amount / PricePerLitreFuel;
@@ -56,7 +62,21 @@ namespace DAT190_Bachelor_Project.Model
             double emission = kmFromFuel * Vehicle.FuelConsumptionPerKm;
             this.KgCO2 = emission;
             return emission;
-            }
+        }
+
+        public string BiggestEmissionFactorDescription()
+        {
+            // TODO: Metoden skal sjekke hvilken enkelt transaksjon eller like transaksjoner
+            // som bidrar mest til de totale utslippene for kategorien.
+            string description = "21.04.18: Månedskort Skyss. 121 kg CO2";
+            return description;
+        }
+
+        public string SimplestEmissionReductionMeasure()
+        {
+            string description = "Du er flinkere enn gjennomsnittet til å reise kollektivt. Hvis du vil redusere utslippene dine enda mer kan du erstatte buss med sykkel. Hvis du sykler istedenfor buss på sommerhalvåret kan du redusere transportutslippene dine med 53 kg CO2, eller 10% i året.";
+            return description;
         }
     }
+}
 

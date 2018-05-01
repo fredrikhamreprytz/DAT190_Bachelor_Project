@@ -17,8 +17,10 @@
             AutomationId="emissionDetailsIconCanvas" 
             PaintSurface="OnPaintPopup" 
             HeightRequest="30" />
+        <Label x:Name="emissionHeader" />
         <Label x:Name="emissionAmountLabel" Text="Test"/>
-        <Label x:Name="emissionTextLabel" Text=""/>
-        <Button Text="Les mer om hvordan du kan redusere dine transportutslipp" />
+        <Label Text="Største bidrag: " />
+        <Label x:Name="emissionDescriptionLabel" Text=""/>
+        <Button Text="Se alle" />
     </StackLayout>
 </pages:PopupPage>

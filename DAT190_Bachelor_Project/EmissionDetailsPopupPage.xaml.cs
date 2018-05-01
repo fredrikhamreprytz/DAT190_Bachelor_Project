@@ -20,8 +20,10 @@ namespace DAT190_Bachelor_Project
             this.emission = emission;
             InitializeComponent();
             stackLayout.BackgroundColor = Color.FromHex(emission.Color.ToString());
+            emissionHeader.Text = "Dine " + emission.Name.ToLower() + " hittil i år er ";
             emissionAmountLabel.Text = ((int)emission.KgCO2).ToString() + " kg CO2";
-            emissionTextLabel.Text = "Bensinfylling bidrar mest til dine transportutslipp. Har du vurdert elbil?";
+            emissionDescriptionLabel.Text = emission.BiggestEmissionFactorDescription();
+
                 
         }
 

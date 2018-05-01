@@ -16,6 +16,7 @@ namespace DAT190_Bachelor_Project.Model
         [Ignore]
         public SKColor Color { get; set; }
         public string SVGIcon { get; set; }
+        public string Name { get; set; }
 
         // Constants used for emission calculation
         private double shortHaulTreshold = 1500;
@@ -44,6 +45,7 @@ namespace DAT190_Bachelor_Project.Model
         {
             this.Color = SKColor.Parse("FFB0F6");
             this.SVGIcon = "M58,73.5 C58,73.5 152.5,26.5 200,3.5 C227,-9 251.5,17 227,35.5 C219,41.5 187,56.5 187,56.5 L149,162.5 L124,175.5 L132,83.5 C132,83.5 67,113.5 45,107.5 C26.5,102.5 0,64.5 0,64.5 L9,57.5 L58,73.5 M55,15.5 L95,43.5 L136,23.5 L76,3.5 L55,15.5 Z";
+            this.Name = "Flyutslipp";
         }
 
         // Methods
@@ -55,6 +57,20 @@ namespace DAT190_Bachelor_Project.Model
             }
              double km = amount / pricePerKm;              // Short og long haul flight             if(km < shortHaulTreshold) {                 a = 0.0000387871;                 b = 2.9866;                 c = 1263.42;             } else if (km > longHaulTreshold) {                 a = 0.000134576;                 b = 6.1798;                 c = 3446.20;             } else {                 a = (0.0000387871 + 0.000134576) / 2;                 b = (2.9866 + 6.1798) / 2;                 c = (1263.42 + 3446.20) / 2;             }             double emission = ((a * Math.Pow(km + dc, 2) + b * (km + dc) + c) / (s * plf)) * cf * cw * (ef * multiplier + preProduction);
             this.KgCO2 = emission;             return emission;
+        }
+
+        public string BiggestEmissionFactorDescription() 
+        {
+            // TODO: Metoden skal sjekke hvilken enkelt transaksjon eller like transaksjoner
+            // som bidrar mest til de totale utslippene for kategorien.
+            string description = "29.01.18: Flyreise tilsvarende Oslo - Los Angeles. 328 kg CO2.";
+            return description;
+        }
+
+        public string SimplestEmissionReductionMeasure() 
+        {
+            string description = "Det ser ut som at du har en del jobbreiser mellom Bergen og Oslo. Nattoget er et fint alternativ, og du er førstemann på jobb om morgenen. Ved å erstatte morgenflyet med natttog kan du redusere flyutslippene dine med 323 kg CO2, eller 40% i året";
+            return description;
         }
     }
 }
