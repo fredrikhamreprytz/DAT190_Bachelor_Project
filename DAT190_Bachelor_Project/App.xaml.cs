@@ -8,7 +8,6 @@ namespace DAT190_Bachelor_Project
 {
     public partial class App : Application
     {
-        static UserDatabase database;
 
         public App()
         {
@@ -17,18 +16,6 @@ namespace DAT190_Bachelor_Project
             ConfigurationManager.Initialise(assembly.GetManifestResourceStream("DAT190_Bachelor_Project.App.config"));
 
             MainPage = new FrontPage();
-        }
-
-        public static UserDatabase Database
-        {
-            get
-            {
-                if (database == null)
-                {
-                    database = new UserDatabase(DependencyService.Get<ISQLite>().GetLocalFilePath("User.db3"));
-                }
-                return database;
-            }
         }
 
         protected override void OnStart()

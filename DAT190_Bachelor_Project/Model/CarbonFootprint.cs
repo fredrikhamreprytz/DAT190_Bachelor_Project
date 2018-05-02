@@ -1,18 +1,14 @@
 ﻿using System;
-using SQLite;
 
 namespace DAT190_Bachelor_Project.Model
 {
     public class CarbonFootprint
     {
-        [PrimaryKey]
         public int Id { get; set; }
 
         // Properties
-        [Ignore]
         public User User { get; set; }
         public DateTime LastUpdate { get; private set; }
-        [Ignore]
         public IEmission[] Emissions { private set; get; }
         public double Flight { get; private set; }
         public double Fuel { get; private set; }

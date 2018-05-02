@@ -1,6 +1,5 @@
 ﻿using System;
 using SkiaSharp;
-using SQLite;
 
 namespace DAT190_Bachelor_Project.Model
 {
@@ -20,11 +19,9 @@ namespace DAT190_Bachelor_Project.Model
             this.Name = "Husholdsutslipp";
         }
 
-        [PrimaryKey]
         public int Id { get; set; }
         public double KgCO2 { get; set; }
         public DateTime Date { get; set; }
-        [Ignore]
         public SKColor Color { get; set; }
         public string SVGIcon { get; set; }
         public string Name { get; set; }

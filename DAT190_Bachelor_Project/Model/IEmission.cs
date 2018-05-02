@@ -1,6 +1,5 @@
 ﻿using System;
 using SkiaSharp;
-using SQLite;
 
 namespace DAT190_Bachelor_Project.Model
 {

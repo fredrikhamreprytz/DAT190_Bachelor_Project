@@ -111,14 +111,6 @@ namespace DAT190_Bachelor_Project
 
         }
 
-        //private async void Save()
-        //{
-        //    // Saving to database
-        //    await App.Database.SaveUserAsync(dummyUser);
-        //}
-
-
-
         void Handle_Touch(object sender, SkiaSharp.Views.Forms.SKTouchEventArgs e)
         {
             

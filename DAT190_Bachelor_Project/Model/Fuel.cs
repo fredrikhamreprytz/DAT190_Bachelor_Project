@@ -1,6 +1,5 @@
 ﻿using System;
 using SkiaSharp;
-using SQLite;
 
 namespace DAT190_Bachelor_Project.Model
 {
@@ -8,13 +7,10 @@ namespace DAT190_Bachelor_Project.Model
     {
         // Properties
 
-        [PrimaryKey]
         public int Id { get; set; }
-        [Ignore]
         public Vehicle Vehicle { get; set; }
         public double KgCO2 { get; set; }
         public DateTime Date { get; set; }
-        [Ignore]
         public SKColor Color { get; set; }
         public string SVGIcon { get; set; }
         public double PricePerLitreFuel { get; set; }
