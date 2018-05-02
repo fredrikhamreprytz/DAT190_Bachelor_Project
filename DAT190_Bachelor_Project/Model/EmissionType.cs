@@ -5,4 +5,6 @@ namespace DAT190_Bachelor_Project.Model
     {
         Flight, Fuel, Household
     };
+
+
 }

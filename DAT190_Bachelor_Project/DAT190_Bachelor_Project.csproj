@@ -63,8 +63,8 @@
       <DependentUpon>EmissionDetailsPopupPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\IDBCom.cs" />
-    <Compile Include="Model\DataSource.cs" />
     <Compile Include="Model\EmissionType.cs" />
+    <Compile Include="Model\DataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
