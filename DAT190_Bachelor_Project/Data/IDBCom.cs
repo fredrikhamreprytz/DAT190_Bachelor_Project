@@ -25,11 +25,13 @@ namespace DAT190_Bachelor_Project.Data
         IEmission FetchFuelEmissions(CarbonFootprint carbonFootprint);
         IEmission FetchHouseholdEmissions(CarbonFootprint carbonFootprint);
 
-        // Tror ikke vi trenger å hente ned en enkel DataSource, så her henter vi 
-        // alle som hører til den gitte kategorien. Dette er for å slippe å hente ned masse
-        // datakilder hvis ikke brukeren klikker på detaljsyn. I detaljsyn skal brukeren
-        // kunne rette opp i Datakilder som hun mener er helt sinnsyk, vi må derfor kunne
-        // oppdatere enkelte DataSource objekter.
+        // Full CRUD pattern for DataSource
+        // any add, update or delete operations on a DataSource object should
+        // prompt WebService to update the Emission object that contains the DataSource.
+        // Updating the Emission object should in turn prompt the WebService to update
+        // the CarbonFootprint object that contains the Emission
+        // This way we do not need to fetch Lists of DataSource object before they are
+        // actually needed (Emission detail views).
         bool AddDataSource(DataSource dataSource);
         DataSource[] FetchDataSources(IEmission emission);
         bool UpdateDataSource(DataSource dataSource);
