@@ -2,6 +2,8 @@
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using DAT190_Bachelor_Project.Model;
+using PCLAppConfig;
+
 namespace DAT190_Bachelor_Project.View
 {
 
@@ -100,7 +102,7 @@ namespace DAT190_Bachelor_Project.View
 
                     // Define drop shadow toward center of cake
                     backgroundPaint.ImageFilter = SKImageFilter.CreateDropShadow(-(iconCenter.X - center.X) / 12, -(iconCenter.Y - center.Y) / 12, 9, 9, SKColors.Black.WithAlpha(50), SKDropShadowImageFilterShadowMode.DrawShadowAndForeground);
-                    backgroundPaint.Color = Emission.Color;
+                    backgroundPaint.Color = GetColor(Emission);
 
                     // Draw path
                     canvas.Save();
@@ -108,7 +110,7 @@ namespace DAT190_Bachelor_Project.View
                     canvas.Restore();
 
                     // Create path from SVG
-                    SKPath icon = SKPath.ParseSvgPathData(Emission.SVGIcon);
+                    SKPath icon = SKPath.ParseSvgPathData(GetSVGPath(Emission));
 
                     // Scale down to fit inside of "dot"
                     SKRect iconBounds = new SKRect();
@@ -129,12 +131,12 @@ namespace DAT190_Bachelor_Project.View
 
                 }
 
-
                 i++;
 
             }
 
         }
+
 
         public void DrawCenterHole() {
 
@@ -150,6 +152,7 @@ namespace DAT190_Bachelor_Project.View
             canvas.DrawCircle(canvasWidth / 2, canvasHeight / 2, cakeRadius - thickness, fillPaint);
             canvas.Restore();
         }
+
 
         public void DrawText() {
 
@@ -178,6 +181,7 @@ namespace DAT190_Bachelor_Project.View
             canvas.DrawText(totalCO2.ToString(), newCenter, paint);
         }
 
+
         public void DrawCake() {
             
             // Define bounds for arc
@@ -198,7 +202,7 @@ namespace DAT190_Bachelor_Project.View
 
                 // Define part of arc
                 SKPath path = new SKPath();
-                paint.Color = Emission.Color;
+                paint.Color = GetColor(Emission);
                 path.MoveTo(center);
                 path.ArcTo(rect, startAngle, sweepAngle, false);
                 path.Close();
@@ -213,6 +217,36 @@ namespace DAT190_Bachelor_Project.View
         }
 
 
+        private string GetSVGPath(IEmission emission) 
+        {
+            switch (emission.Type)
+            {
+                case EmissionType.Flight:
+                    return ConfigurationManager.AppSettings["FlightIconSVG"];
+                case EmissionType.Fuel:
+                    return ConfigurationManager.AppSettings["FuelIconSVG"];
+                case EmissionType.Household:
+                    return ConfigurationManager.AppSettings["HouseholdIconSVG"];
+                default:
+                    return "";
+            }
+        }
+
+        private SKColor GetColor(IEmission emission)
+        {
+            
+            switch (emission.Type)
+            {
+                case EmissionType.Flight:
+                    return SKColor.Parse(ConfigurationManager.AppSettings["FlightCakeColor"]);
+                case EmissionType.Fuel:
+                    return SKColor.Parse(ConfigurationManager.AppSettings["FuelCakeColor"]);
+                case EmissionType.Household:
+                    return SKColor.Parse(ConfigurationManager.AppSettings["HouseholdCakeColor"]);
+                default:
+                    return SKColors.Transparent;
+            }
+        }
 
 
     }

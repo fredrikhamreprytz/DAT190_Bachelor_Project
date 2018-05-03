@@ -5,16 +5,13 @@
              xmlns:local="clr-namespace:SkiaSharpSample"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Class="DAT190_Bachelor_Project.FrontPage"
+             Title="Mitt CO2 Avtrykk"
              BackgroundColor="#e6e6e6">
 
     <!-- Main Stack layout -->
     <StackLayout VerticalOptions="CenterAndExpand">
         
         <!-- Header -->
-        <StackLayout Padding="40, 0, 40, 0" >
-            <Label x:Name="titleLabel1" Text="Hei Knut!" FontSize="60" HorizontalTextAlignment="Center" TextColor="Gray" Margin="0, 0, 0, 40" />
-            <Label x:Name="titleLabel2" Text="Ditt CO2 avtrykk hittil i år er:" FontSize="40" HorizontalTextAlignment="Center" TextColor="Gray" />
-        </StackLayout>
 
         <skia:SKCanvasView 
             x:Name="carbonFootprintCanvas" 

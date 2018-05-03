@@ -3,10 +3,10 @@ namespace DAT190_Bachelor_Project.Model
 {
     public class DataSource
     {
-        DateTime Timestamp;
-        string Description;
-        double Value;
-        EmissionType Type;
+        public DateTime Timestamp { get; set; }
+        public string Description { get; set; }
+        public double Value { get; set; }
+        public EmissionType Type { get; set; }
 
         public DataSource(DateTime timestamp, string description, double value, EmissionType type)
         {
@@ -15,7 +15,5 @@ namespace DAT190_Bachelor_Project.Model
             this.Value = value;
             this.Type = type;
         }
-
-
     }
 }

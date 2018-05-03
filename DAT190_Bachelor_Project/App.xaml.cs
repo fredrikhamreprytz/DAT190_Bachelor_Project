@@ -15,7 +15,7 @@ namespace DAT190_Bachelor_Project
             Assembly assembly = typeof(App).GetTypeInfo().Assembly;
             ConfigurationManager.Initialise(assembly.GetManifestResourceStream("DAT190_Bachelor_Project.App.config"));
 
-            MainPage = new FrontPage();
+            MainPage = new MainNavigationPage(new FrontPage());
         }
 
         protected override void OnStart()

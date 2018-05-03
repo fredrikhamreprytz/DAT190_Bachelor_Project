@@ -41,7 +41,7 @@ namespace DAT190_Bachelor_Project
 
             carbonFootprint = new CarbonFootprint();
 
-            titleLabel1.Text = dummyUser.FirstName;
+            //titleLabel1.Text = dummyUser.FirstName;
 
             // Setting dependencies
             dummyUser.CarbonFootprint = carbonFootprint;
@@ -148,8 +148,8 @@ namespace DAT190_Bachelor_Project
 
         private async void OpenEmissionDetailsPopupPage(IEmission emission)
         {
-            var page = new EmissionDetailsPopupPage(emission);
-            await Navigation.PushPopupAsync(page);
+            var page = new EmissionDetailsPage(emission);
+            await Navigation.PushAsync(page);
         }
     }
 
