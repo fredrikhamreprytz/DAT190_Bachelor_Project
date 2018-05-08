@@ -4,12 +4,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SkiaSharpSample"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:views="DAT190_Bachelor_Project.EmissionHighlightView"
              x:Class="DAT190_Bachelor_Project.FrontPage"
              Title="Mitt CO2 Avtrykk"
              BackgroundColor="#e6e6e6">
 
     <!-- Main Stack layout -->
-    <StackLayout VerticalOptions="CenterAndExpand">
+    <StackLayout x:Name="MainStackLayout" VerticalOptions="CenterAndExpand">
         
         <!-- Header -->
 
@@ -22,5 +23,5 @@
             Touch="Handle_Touch"/>
 
     </StackLayout><!-- End Main Stack Layout -->
-    
+
 </ContentPage>

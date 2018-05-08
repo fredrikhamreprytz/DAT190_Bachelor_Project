@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using DAT190_Bachelor_Project.Model;
 using System.Collections.ObjectModel;
 
@@ -19,6 +18,19 @@ namespace DAT190_Bachelor_Project
             dataSourceList.Add(new DataSource(DateTime.Now, "Some datasource", 23.98, EmissionType.Flight));
             dataSourceList.Add(new DataSource(DateTime.Now, "Some other datasource", 89.43, EmissionType.Flight));
             dataSourceList.Add(new DataSource(DateTime.Now, "Some third datasource", 219.91, EmissionType.Flight));
+        }
+
+        public void OnEdit(object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            DataSource ds = (DataSource)mi.CommandParameter;
+            Navigation.PushModalAsync(new EditDataSourcePage(ds));
+        }
+
+        public void OnDelete(object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            DisplayAlert("Delete Context Action", mi.CommandParameter + " delete context action", "OK");
         }
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DAT190_Bachelor_Project.EditDataSourcePage"
+             Padding="20,20,20,20">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="Beskrivelse" />
+            <Entry x:Name="DataSourceDescriptionEntry" Placeholder="Eksisterende beskrivelse" />
+            <Label Text="Mengde" />
+            <Entry x:Name="DataSourceAmountEntry" Placeholder="Eksisterende mengde" />
+            <Label Text="Dato" />
+            <DatePicker x:Name="DataSourceDateEntry" />
+            <Button Text="Lagre" Clicked="SaveButtonClicked" />
+            <Button Text="Avbryt" Clicked="CancelButtonClicked" /> 
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

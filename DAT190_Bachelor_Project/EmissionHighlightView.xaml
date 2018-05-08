@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:DAT190_Bachelor_Project"
+             x:Class="DAT190_Bachelor_Project.EmissionHighlightView"
+             Padding="20, 0, 20, 0">
+    <ContentView.Content>
+        <StackLayout>
+            <Label x:Name="HighlightedEmissionNameLabel" Text="Content view" FontSize="40"/>
+            <Label x:Name="HighlightedEmissionValueLabel" Text="Content view" FontSize="40"/>
+            <Button x:Name="EmissionDetailsButton" Text="Detaljer" Clicked="EmissionDetailsButtonClicked"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

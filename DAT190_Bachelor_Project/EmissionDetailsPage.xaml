@@ -11,10 +11,17 @@
 
 
 
-        <ListView x:Name="DataSourceListView">
+        <ListView x:Name="DataSourceListView"
+                  IsPullToRefreshEnabled="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Description}" />
+                    <ViewCell> 
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnEdit" CommandParameter="{Binding .}" Text="Endre" />
+                            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Slett" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                        <Label Text="{Binding Description}" />
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

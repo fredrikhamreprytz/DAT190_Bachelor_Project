@@ -46,6 +46,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmissionHighlightView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDataSourcePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -79,6 +87,16 @@
     <Compile Include="MainNavigationPage.xaml.cs">
       <DependentUpon>MainNavigationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EmissionHighlightView.xaml.cs">
+      <DependentUpon>EmissionHighlightView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditDataSourcePage.xaml.cs">
+      <DependentUpon>EditDataSourcePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CakeOrientation.cs" />
+    <Compile Include="View\PieceOfCake.cs" />
+    <Compile Include="View\Icon.cs" />
+    <Compile Include="View\CakeUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />

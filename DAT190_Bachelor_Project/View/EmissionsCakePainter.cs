@@ -3,6 +3,8 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using DAT190_Bachelor_Project.Model;
 using PCLAppConfig;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace DAT190_Bachelor_Project.View
 {
@@ -13,67 +15,18 @@ namespace DAT190_Bachelor_Project.View
     // og ha en property som er den samlede utregningen av disse (TotalFuelEmissionsInKg) elns.
     public class EmissionsCakePainter
     {
-        float cakeRadius;
-        public float iconRadius { get; set; }
-        public float scale { get; set; }
-        float canvasHeight;
-        float canvasWidth;
-        float totalValues;
-        float thickness;
-        float iconSpacing;
-        public SKPoint[] IconCenterList { get; set; }
-        SKCanvas canvas;
-        SKPoint center;
-        IEmission[] Emissions;
+        public SKCanvas canvas;
+        public CakeOrientation CakeOrientation { get; set; }
 
-        public EmissionsCakePainter(float iconRadius, float iconSpacing, float thickness, float canvasHeight, float canvasWidth, SKPaintSurfaceEventArgs e, CarbonFootprint Co2) 
+        public EmissionsCakePainter(CakeOrientation Cake, SKCanvas canvas) 
         {
-            
-            this.cakeRadius = Math.Min(canvasWidth / 2, canvasHeight / 2) - 1.75f * iconRadius;
-            this.iconRadius = iconRadius;
-            this.thickness = thickness;
-            this.iconSpacing = iconSpacing;
-            this.canvasHeight = canvasHeight;
-            this.canvasWidth = canvasWidth;
-            this.canvas = e.Surface.Canvas;
-            this.center = new SKPoint(canvasWidth / 2, canvasHeight / 2);
-            this.Emissions = Co2.Emissions;
-
-            scale = (float)(e.Info.Width / canvasWidth);
-            canvas.Scale(scale);
+            this.canvas = canvas;
+            this.CakeOrientation = Cake;
             canvas.Clear();
-
-            foreach (IEmission Emission in Emissions)
-            {
-                this.totalValues += (float)Emission.KgCO2;
-            }
-
-            CalculateCoordinates();
-
         }
 
-        private void CalculateCoordinates() {
-
-            this.IconCenterList = new SKPoint[this.Emissions.Length];
-            float startAngle = 0;
-            int i = 0;
-
-            foreach (IEmission Emission in Emissions)
-            {
-                float sweepAngle = 360f * (float)Emission.KgCO2 / totalValues;
-
-                // Calculate coordinates for icons
-                float offsetAngle = startAngle + (sweepAngle / 2);
-                float offsetX = (cakeRadius + iconSpacing) * (float)Math.Cos(offsetAngle * Math.PI * 2 / 360);
-                float offsetY = (cakeRadius + iconSpacing) * (float)Math.Sin(offsetAngle * Math.PI * 2 / 360);
-                IconCenterList[i] = new SKPoint(center.X + offsetX, center.Y + offsetY);
-                startAngle += sweepAngle;
-                i++;
-            }
-        }
 
         public void DrawIcons() {
-
 
             // Define paint
             SKPaint iconPaint = new SKPaint
@@ -92,17 +45,19 @@ namespace DAT190_Bachelor_Project.View
 
             int i = 0;
 
-            // Loop through all emission categories
-            foreach (IEmission Emission in Emissions)
+            // Loop through all pieces of cake
+            foreach (PieceOfCake Slice in CakeOrientation.PiecesOfCake)
             {
 
-                if (Emission.KgCO2/totalValues > 0.01) 
+                if (Slice.Emission.KgCO2/CakeOrientation.TotalValues > 0.04) 
                 {
-                    SKPoint iconCenter = IconCenterList[i];
+                    SKPoint iconCenter = Slice.Icon.Center;
+                    float iconRadius = Slice.Icon.Radius;
 
                     // Define drop shadow toward center of cake
-                    backgroundPaint.ImageFilter = SKImageFilter.CreateDropShadow(-(iconCenter.X - center.X) / 12, -(iconCenter.Y - center.Y) / 12, 9, 9, SKColors.Black.WithAlpha(50), SKDropShadowImageFilterShadowMode.DrawShadowAndForeground);
-                    backgroundPaint.Color = GetColor(Emission);
+                    backgroundPaint.ImageFilter = Slice.Icon.DropShadow;
+
+                    backgroundPaint.Color = Slice.Color;
 
                     // Draw path
                     canvas.Save();
@@ -110,31 +65,13 @@ namespace DAT190_Bachelor_Project.View
                     canvas.Restore();
 
                     // Create path from SVG
-                    SKPath icon = SKPath.ParseSvgPathData(GetSVGPath(Emission));
-
-                    // Scale down to fit inside of "dot"
-                    SKRect iconBounds = new SKRect();
-                    icon.GetBounds(out iconBounds);
-                    float iconMax = Math.Max(iconBounds.Width, iconBounds.Height);
-                    float iconWidth = (float)Math.Sqrt(2 * Math.Pow(iconRadius, 2));
-                    var iconScale = iconWidth / iconMax;
-                    SKMatrix scaleMatrix = SKMatrix.MakeScale(iconScale, iconScale);
-                    icon.Transform(scaleMatrix);
-
-                    // Move icon to center of "dot"
-                    icon.GetBounds(out iconBounds);
-                    SKMatrix translate = SKMatrix.MakeTranslation(iconCenter.X - iconBounds.Width / 2, iconCenter.Y - iconBounds.Height / 2);
-                    icon.Transform(translate);
+                    SKPath icon = Slice.Icon.SVG;
 
                     // Draw path
                     canvas.DrawPath(icon, iconPaint);
-
                 }
-
                 i++;
-
             }
-
         }
 
 
@@ -146,10 +83,13 @@ namespace DAT190_Bachelor_Project.View
                 Color = SKColor.Parse("#e6e6e6"),
                 IsAntialias = true
             };
+
+            float thickness = CakeOrientation.Thickness;
+            float radius = CakeOrientation.Radius;
                 
             // Draw path
             canvas.Save();
-            canvas.DrawCircle(canvasWidth / 2, canvasHeight / 2, cakeRadius - thickness, fillPaint);
+            canvas.DrawCircle(CakeOrientation.Center.X , CakeOrientation.Center.Y, radius - thickness, fillPaint);
             canvas.Restore();
         }
 
@@ -173,20 +113,22 @@ namespace DAT190_Bachelor_Project.View
                     SKFontStyleSlant.Upright)
             };
 
-            var newCenter = center;
+            var newCenter = CakeOrientation.Center;
             newCenter.Y += fontSize / 2*0.75f;
 
             // Draw Text
-            int totalCO2 = (int)totalValues;
+            int totalCO2 = (int)CakeOrientation.TotalValues;
             canvas.DrawText(totalCO2.ToString(), newCenter, paint);
         }
 
 
         public void DrawCake() {
-            
+
+            SKPoint Center = CakeOrientation.Center;
+            float CakeRadius = CakeOrientation.Radius;
+
             // Define bounds for arc
-            SKRect rect = new SKRect(center.X - cakeRadius, center.Y - cakeRadius, center.X + cakeRadius, center.Y + cakeRadius);
-            float startAngle = 0;
+            SKRect rect = new SKRect(Center.X - CakeRadius, Center.Y - CakeRadius, Center.X + CakeRadius, Center.Y + CakeRadius);
 
             // Define paint
             SKPaint paint = new SKPaint
@@ -196,58 +138,21 @@ namespace DAT190_Bachelor_Project.View
             };
 
             // Loop through emission categories
-            foreach (IEmission Emission in Emissions)
+            foreach (PieceOfCake Slice in CakeOrientation.PiecesOfCake)
             {
-                float sweepAngle = 360f * (float)Emission.KgCO2 / totalValues;
 
                 // Define part of arc
                 SKPath path = new SKPath();
-                paint.Color = GetColor(Emission);
-                path.MoveTo(center);
-                path.ArcTo(rect, startAngle, sweepAngle, false);
+                paint.Color = Slice.Color;
+                path.MoveTo(Center);
+                path.ArcTo(rect, Slice.StartAngle, Slice.ArcAngle, false);
                 path.Close();
 
                 // Draw path
                 canvas.Save();
                 canvas.DrawPath(path, paint);
                 canvas.Restore();
-
-                startAngle += sweepAngle;
             }
         }
-
-
-        private string GetSVGPath(IEmission emission) 
-        {
-            switch (emission.Type)
-            {
-                case EmissionType.Flight:
-                    return ConfigurationManager.AppSettings["FlightIconSVG"];
-                case EmissionType.Fuel:
-                    return ConfigurationManager.AppSettings["FuelIconSVG"];
-                case EmissionType.Household:
-                    return ConfigurationManager.AppSettings["HouseholdIconSVG"];
-                default:
-                    return "";
-            }
-        }
-
-        private SKColor GetColor(IEmission emission)
-        {
-            
-            switch (emission.Type)
-            {
-                case EmissionType.Flight:
-                    return SKColor.Parse(ConfigurationManager.AppSettings["FlightCakeColor"]);
-                case EmissionType.Fuel:
-                    return SKColor.Parse(ConfigurationManager.AppSettings["FuelCakeColor"]);
-                case EmissionType.Household:
-                    return SKColor.Parse(ConfigurationManager.AppSettings["HouseholdCakeColor"]);
-                default:
-                    return SKColors.Transparent;
-            }
-        }
-
-
     }
 }

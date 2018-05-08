@@ -20,7 +20,7 @@ namespace DAT190_Bachelor_Project
 
         OBPUtil obp;
         User dummyUser;
-        EmissionsCakePainter cakePainter;
+        CakeOrientation Cake;
         RestService restService = new RestService();
         CarbonFootprint carbonFootprint;
 
@@ -35,10 +35,11 @@ namespace DAT190_Bachelor_Project
             dummyUser.LastName = "Helland";
             dummyUser.Password = "passord";
 
+
             // Create dummy vehicle
             Vehicle dummyVehicle = new Vehicle("AA 12345", VehicleSize.Medium, FuelType.Petrol, 0.7);
             dummyUser.Vehicle = dummyVehicle;
-
+            NavigationPage.SetTitleIcon(this, "logo.png");
             carbonFootprint = new CarbonFootprint();
 
             //titleLabel1.Text = dummyUser.FirstName;
@@ -58,6 +59,8 @@ namespace DAT190_Bachelor_Project
             dummyUser.SocialSecurityNr = "";
             dummyUser.ClientId = "";
             dummyUser.ClientSecret = "";
+
+            MainStackLayout.Children.Insert(0, new EmissionHighlightView(dummyUser.CarbonFootprint.Emissions[0]));
 
             // Save user to RESTapi
             // restService.SaveUserAsync(dummyUser);
@@ -98,11 +101,18 @@ namespace DAT190_Bachelor_Project
 
         private void OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
+            if (Cake == null)
+            {
+                Cake = new CakeOrientation(dummyUser.CarbonFootprint, carbonFootprintCanvas);
+            }
 
-            float width = (float)carbonFootprintCanvas.Width;
-            float height = (float)carbonFootprintCanvas.Height;
-            cakePainter = new EmissionsCakePainter(32, 6, 33, height, width, e, dummyUser.CarbonFootprint);
+            SKCanvas canvas = e.Surface.Canvas;
+            float scale = (float)(e.Info.Width / carbonFootprintCanvas.Width);
+            canvas.Scale(scale);
+            Cake.Scale = scale;
+            Cake.CanvasView = carbonFootprintCanvas;
 
+            EmissionsCakePainter cakePainter = new EmissionsCakePainter(Cake, canvas);
             cakePainter.DrawCake();
             cakePainter.DrawCenterHole();
             cakePainter.DrawText();
@@ -111,46 +121,19 @@ namespace DAT190_Bachelor_Project
 
         }
 
-        void Handle_Touch(object sender, SkiaSharp.Views.Forms.SKTouchEventArgs e)
+        async void Handle_Touch(object sender, SkiaSharp.Views.Forms.SKTouchEventArgs e)
         {
-            
             SKPoint touchLocation = e.Location;
-            IEmission emissionClicked = null;
-            int i = 0;
-            foreach (SKPoint iconCenter in cakePainter.IconCenterList)
+            PieceOfCake Slice = Cake.SelectPieceOfCake(e);
+            if (Slice != null)
             {
-                float minX = iconCenter.X - cakePainter.iconRadius;
-                float maxX = iconCenter.X + cakePainter.iconRadius;
-                float minY = iconCenter.Y - cakePainter.iconRadius;
-                float maxY = iconCenter.Y + cakePainter.iconRadius;
-
-                minX *= cakePainter.scale;
-                maxX *= cakePainter.scale;
-                minY *= cakePainter.scale;
-                maxY *= cakePainter.scale;
-
-                bool insideX = touchLocation.X > minX && touchLocation.X < maxX;
-                bool insideY = touchLocation.Y > minY && touchLocation.Y < maxY;
-
-                if (insideX && insideY)
-                {
-                    emissionClicked = carbonFootprint.Emissions[i];
-
-                }
-
-                i++;
-            }
-
-            if (emissionClicked != null) {
-                OpenEmissionDetailsPopupPage(emissionClicked);
+                //Cake.AnimateSelection(Slice.Emission, 1000);
+                await Cake.AnimateSelection(Slice.Emission, 500);
+                MainStackLayout.Children.RemoveAt(0);
+                MainStackLayout.Children.Insert(0, new EmissionHighlightView(Slice.Emission));
             }
         }
 
-        private async void OpenEmissionDetailsPopupPage(IEmission emission)
-        {
-            var page = new EmissionDetailsPage(emission);
-            await Navigation.PushAsync(page);
-        }
     }
 
 
