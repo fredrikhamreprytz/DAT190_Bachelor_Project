@@ -6,7 +6,7 @@ using System.Threading;
 using DAT190_Bachelor_Project.Model;
 using System.Diagnostics;
 
-namespace DAT190_Bachelor_Project.View
+namespace DAT190_Bachelor_Project.Bakery
 {
     public class CakeOrientation
     {
@@ -14,16 +14,17 @@ namespace DAT190_Bachelor_Project.View
         public float OldOffset { get; set; }
         public float OffsetDifference { get; set; }
         public float TotalValues { get; set; }
-        float StartAngleOffset;
         public float Radius;
         public float Scale;
+        public bool IsAnimating { get; set; }
         CarbonFootprint CO2;
-        IEmission CurrentlySelected;
+        public PieceOfCake CurrentlySelected;
         public SKPoint Center { get; set; }
         public float Thickness { get; set; }
         public float IconOffset { get; set; }
         public float IconRadius { get; set; }
         public SKCanvasView CanvasView { get; set; }
+        public PopOver PopOver { get; set; }
 
         public CakeOrientation(CarbonFootprint co2, SKCanvasView canvasView)
         {
@@ -39,7 +40,7 @@ namespace DAT190_Bachelor_Project.View
             this.Radius = Math.Min(Width / 2, Height / 2) - 1.75f * 32f;
             this.TotalValues = 0;
             this.CO2 = co2;
-            this.StartAngleOffset = 0;
+            this.PopOver = new PopOver(Radius - Thickness * 1.3f, 80, 30, 25);
 
             foreach (IEmission Emission in CO2.Emissions)
             {
@@ -115,13 +116,13 @@ namespace DAT190_Bachelor_Project.View
 
                 if (Slice.Emission.Equals(Selected))
                 {
+                    CurrentlySelected = Slice;
                     newStartAngleOffset += (Slice.ArcAngle / 2) - 90;
                     add = true;
                 }
             }
 
             OffsetDifference = newStartAngleOffset - OldOffset;
-            CurrentlySelected = Selected;
             OldOffset = newStartAngleOffset;
 
             return OffsetDifference;
@@ -175,21 +176,33 @@ namespace DAT190_Bachelor_Project.View
 
             // These two values constitute the animation speed 
             // angleInterval is the resolution of animation
-            float angleInterval = offset/16;
-            // ms is the frame rate. Acts unexpected for vaues below 10.
+            float angleInterval = Math.Abs(offset) > 220 ? offset/28 : offset/16;
+            // ms is the frame rate. Acts unexpectedly for vaues below 10.
             int ms = 10;
-
+            IsAnimating = true;
+            PopOver.Factor = 0;
             if (offset < 0)
             {
                 while (i > offset - angleInterval)
                 {
                     SetOrientation(angleInterval);
                     CanvasView.InvalidateSurface();
+
                     await Task.Delay(TimeSpan.FromMilliseconds(ms));
                     i += angleInterval;
+                    System.Diagnostics.Debug.WriteLine("i: " + i);
+                    if (i < offset*0.1)
+                    {
+                        float remaining = offset * 0.9f / angleInterval; 
+                        PopOver.Factor += 1f / remaining;
+                    }
+                    CanvasView.InvalidateSurface();
                 }
                 SetOrientation(offset - i);
+                PopOver.Factor = 1;
+                await Task.Delay(TimeSpan.FromMilliseconds(ms));
                 CanvasView.InvalidateSurface();
+
             }
             else
             {
@@ -199,10 +212,22 @@ namespace DAT190_Bachelor_Project.View
                     CanvasView.InvalidateSurface();
                     await Task.Delay(TimeSpan.FromMilliseconds(ms));
                     i += angleInterval;
+                    System.Diagnostics.Debug.WriteLine("i: " + i);
+                    if (i > offset * 0.1)
+                    {
+                        float remaining = offset * 0.9f / angleInterval;
+                        PopOver.Factor += 1f / remaining;
+                    }
+                    CanvasView.InvalidateSurface();
                 }
                 SetOrientation(offset - i);
+                PopOver.Factor = 1;
+                await Task.Delay(TimeSpan.FromMilliseconds(ms));
                 CanvasView.InvalidateSurface();
             }
+            System.Diagnostics.Debug.WriteLine("offset: " + offset);
+
+            IsAnimating = false;
         }
     }
 }

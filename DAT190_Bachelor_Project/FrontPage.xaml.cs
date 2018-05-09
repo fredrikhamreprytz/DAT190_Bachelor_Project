@@ -4,14 +4,11 @@ using System.Net;
 using System.IO;
 using Plugin.Toasts;
 using DAT190_Bachelor_Project.Model;
-using DAT190_Bachelor_Project.View;
+using DAT190_Bachelor_Project.Bakery;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using PCLAppConfig;
 using DAT190_Bachelor_Project.Data;
-using System.Collections.Generic;
-using System.Linq;
-using Rg.Plugins.Popup.Extensions;
 
 namespace DAT190_Bachelor_Project
 {
@@ -116,6 +113,7 @@ namespace DAT190_Bachelor_Project
             cakePainter.DrawCake();
             cakePainter.DrawCenterHole();
             cakePainter.DrawText();
+            cakePainter.DrawPopover();
             cakePainter.DrawIcons();
 
 
@@ -127,11 +125,16 @@ namespace DAT190_Bachelor_Project
             PieceOfCake Slice = Cake.SelectPieceOfCake(e);
             if (Slice != null)
             {
-                //Cake.AnimateSelection(Slice.Emission, 1000);
-                await Cake.AnimateSelection(Slice.Emission, 500);
                 MainStackLayout.Children.RemoveAt(0);
                 MainStackLayout.Children.Insert(0, new EmissionHighlightView(Slice.Emission));
+                await Cake.AnimateSelection(Slice.Emission, 500);
+                Cake.CurrentlySelected = Slice;
+
+            } else {
+                Cake.CurrentlySelected = null;
+
             }
+            Cake.CanvasView.InvalidateSurface();
         }
 
     }

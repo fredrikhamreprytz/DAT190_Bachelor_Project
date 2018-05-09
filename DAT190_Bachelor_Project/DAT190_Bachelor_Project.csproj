@@ -71,7 +71,7 @@
     <Compile Include="Model\VehicleSize.cs" />
     <Compile Include="Model\FuelType.cs" />
     <Compile Include="Model\OBPUtil.cs" />
-    <Compile Include="View\EmissionsCakePainter.cs" />
+    <Compile Include="Bakery\EmissionsCakePainter.cs" />
     <Compile Include="Model\CarbonFootprint.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Data\RestService.cs" />
@@ -93,10 +93,11 @@
     <Compile Include="EditDataSourcePage.xaml.cs">
       <DependentUpon>EditDataSourcePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CakeOrientation.cs" />
-    <Compile Include="View\PieceOfCake.cs" />
-    <Compile Include="View\Icon.cs" />
-    <Compile Include="View\CakeUtil.cs" />
+    <Compile Include="Bakery\CakeOrientation.cs" />
+    <Compile Include="Bakery\PieceOfCake.cs" />
+    <Compile Include="Bakery\Icon.cs" />
+    <Compile Include="Bakery\CakeUtil.cs" />
+    <Compile Include="Bakery\PopOver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />

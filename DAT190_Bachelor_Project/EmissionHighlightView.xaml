@@ -3,12 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:DAT190_Bachelor_Project"
              x:Class="DAT190_Bachelor_Project.EmissionHighlightView"
-             Padding="20, 0, 20, 0">
+             Padding="20, 20, 20, 0">
     <ContentView.Content>
-        <StackLayout>
-            <Label x:Name="HighlightedEmissionNameLabel" Text="Content view" FontSize="40"/>
-            <Label x:Name="HighlightedEmissionValueLabel" Text="Content view" FontSize="40"/>
-            <Button x:Name="EmissionDetailsButton" Text="Detaljer" Clicked="EmissionDetailsButtonClicked"/>
-        </StackLayout>
+        <Frame x:Name="HighlightedEmissionFrame" HasShadow="false" CornerRadius="15">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Margin="0" VerticalOptions="Center" x:Name="HighlightedEmissionHeaderLabel" Text="Content view" FontSize="20" TextColor="White" FontAttributes="Bold" />
+                    <Button VerticalOptions="Center" x:Name="EmissionDetailsButton" Text="Detaljer" Clicked="EmissionDetailsButtonClicked"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Frame BackgroundColor="White" HasShadow="false" Padding="2,2,2,2" CornerRadius="3">
+                        <Label Text="09.05" FontSize="12" />
+                    </Frame>
+                    <Frame BackgroundColor="White" HasShadow="false" Padding="2,2,2,2" CornerRadius="3">
+                        <Label Text="En transakjson som vi henter ned" FontSize="12" />
+                    </Frame>
+                    <Frame BackgroundColor="White" HasShadow="false" Padding="2,2,2,2" CornerRadius="3">
+                        <Label Text="238 km" FontSize="12" />
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
     </ContentView.Content>
 </ContentView>

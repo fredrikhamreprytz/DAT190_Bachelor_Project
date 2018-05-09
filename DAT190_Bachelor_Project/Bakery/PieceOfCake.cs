@@ -2,7 +2,7 @@
 using SkiaSharp;
 using DAT190_Bachelor_Project.Model;
 
-namespace DAT190_Bachelor_Project.View
+namespace DAT190_Bachelor_Project.Bakery
 {
     public class PieceOfCake
     {

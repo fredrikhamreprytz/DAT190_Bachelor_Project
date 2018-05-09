@@ -3,7 +3,7 @@ using SkiaSharp;
 using PCLAppConfig;
 using DAT190_Bachelor_Project.Model;
 
-namespace DAT190_Bachelor_Project.View
+namespace DAT190_Bachelor_Project.Bakery
 {
     public static class CakeUtil
     {
@@ -20,6 +20,22 @@ namespace DAT190_Bachelor_Project.View
                     return SKColor.Parse(ConfigurationManager.AppSettings["HouseholdCakeColor"]);
                 default:
                     return SKColors.Transparent;
+            }
+        }
+
+        public static string GetTitle(IEmission emission)
+        {
+
+            switch (emission.Type)
+            {
+                case EmissionType.Flight:
+                    return ConfigurationManager.AppSettings["FlightTitleText"];
+                case EmissionType.Fuel:
+                    return ConfigurationManager.AppSettings["FuelTitleText"];
+                case EmissionType.Household:
+                    return ConfigurationManager.AppSettings["HouseholdTitleText"];
+                default:
+                    return "";
             }
         }
 
