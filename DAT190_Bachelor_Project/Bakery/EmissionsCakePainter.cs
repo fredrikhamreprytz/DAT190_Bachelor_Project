@@ -80,7 +80,7 @@ namespace DAT190_Bachelor_Project.Bakery
             // Define paint
             SKPaint fillPaint = new SKPaint
             {
-                Color = SKColor.Parse("#e6e6e6"),
+                Color = SKColor.Parse(ConfigurationManager.AppSettings["BackgroundColor"]),
                 IsAntialias = true
             };
 
@@ -109,47 +109,17 @@ namespace DAT190_Bachelor_Project.Bakery
 
             // Define paint
 
-            SKPaint titlePaint = new SKPaint
-            {
-                Color = titleFontColor,
-                IsAntialias = true,
-                Style = SKPaintStyle.Fill,
-                TextAlign = SKTextAlign.Center,
-                TextSize = titleFontSize,
-                Typeface = SKTypeface.FromFamilyName(
-                    "Arial",
-                    SKFontStyleWeight.Bold,
-                    SKFontStyleWidth.Normal,
-                    SKFontStyleSlant.Upright)
-            };
+            SKPaint titlePaint = CakeOrientation.NormalFont;
+            titlePaint.Color = titleFontColor;
+            titlePaint.TextSize = titleFontSize;
 
-            SKPaint amountPaint = new SKPaint
-            {
-                Color = amountFontColor,
-                IsAntialias = true,
-                Style = SKPaintStyle.Fill,
-                TextAlign = SKTextAlign.Center,
-                TextSize = amountFontSize,
-                Typeface = SKTypeface.FromFamilyName(
-                    "Arial",
-                    SKFontStyleWeight.Bold,
-                    SKFontStyleWidth.Normal,
-                    SKFontStyleSlant.Upright)
-            };
+            SKPaint amountPaint = CakeOrientation.BoldFont;
+            amountPaint.Color = amountFontColor;
+            amountPaint.TextSize = amountFontSize;
 
-            SKPaint unitPaint = new SKPaint
-            {
-                Color = unitFontColor,
-                IsAntialias = true,
-                Style = SKPaintStyle.Fill,
-                TextAlign = SKTextAlign.Center,
-                TextSize = unitFontSize,
-                Typeface = SKTypeface.FromFamilyName(
-                    "Arial",
-                    SKFontStyleWeight.Bold,
-                    SKFontStyleWidth.Normal,
-                    SKFontStyleSlant.Upright)
-            };
+            SKPaint unitPaint = CakeOrientation.NormalFont;
+            unitPaint.Color = unitFontColor;
+            unitPaint.TextSize = unitFontSize;
 
             SKPoint amountTextCenter = CakeOrientation.Center;
             SKPoint titleTextCenter = CakeOrientation.Center;
@@ -207,47 +177,16 @@ namespace DAT190_Bachelor_Project.Bakery
 
                 // Define paint
 
-                SKPaint titlePaint = new SKPaint
-                {
-                    Color = titleFontColor,
-                    IsAntialias = true,
-                    Style = SKPaintStyle.Fill,
-                    TextAlign = SKTextAlign.Center,
-                    TextSize = titleFontSize,
-                    Typeface = SKTypeface.FromFamilyName(
-                        "Arial",
-                        SKFontStyleWeight.Bold,
-                        SKFontStyleWidth.Normal,
-                        SKFontStyleSlant.Upright)
-                };
+                SKPaint titlePaint = CakeOrientation.NormalFont;
+                titlePaint.Color = titleFontColor;
+                titlePaint.TextSize = titleFontSize;
 
-                SKPaint amountPaint = new SKPaint
-                {
-                    Color = amountFontColor,
-                    IsAntialias = true,
-                    Style = SKPaintStyle.Fill,
-                    TextAlign = SKTextAlign.Center,
-                    TextSize = amountFontSize,
-                    Typeface = SKTypeface.FromFamilyName(
-                        "Arial",
-                        SKFontStyleWeight.Bold,
-                        SKFontStyleWidth.Normal,
-                        SKFontStyleSlant.Upright)
-                };
+                SKPaint amountPaint = CakeOrientation.BoldFont;
+                amountPaint.Color = amountFontColor;
+                amountPaint.TextSize = amountFontSize;
 
-                SKPaint unitPaint = new SKPaint
-                {
-                    Color = unitFontColor,
-                    IsAntialias = true,
-                    Style = SKPaintStyle.Fill,
-                    TextAlign = SKTextAlign.Center,
-                    TextSize = unitFontSize,
-                    Typeface = SKTypeface.FromFamilyName(
-                        "Arial",
-                        SKFontStyleWeight.Bold,
-                        SKFontStyleWidth.Normal,
-                        SKFontStyleSlant.Upright)
-                };
+                SKPaint unitPaint = titlePaint;
+
 
                 SKPoint amountTextCenter = CakeOrientation.Center;
                 SKPoint titleTextCenter = CakeOrientation.Center;

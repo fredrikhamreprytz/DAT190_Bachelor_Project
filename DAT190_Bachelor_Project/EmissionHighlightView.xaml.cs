@@ -16,8 +16,8 @@ namespace DAT190_Bachelor_Project
             
             InitializeComponent();
             this.emission = emission;
-            HighlightedEmissionFrame.BackgroundColor = Color.FromHex(CakeUtil.GetColor(emission).ToString());
-            HighlightedEmissionHeaderLabel.Text = "Nyeste i " + CakeUtil.GetTitle(emission).ToLower() + "utslipp:";
+            YetiRankImage.Source = "YetiPrince";
+
             //HighlightedEmissionValueLabel.Text = (int)emission.KgCO2 + " kg CO2.";
 
         }

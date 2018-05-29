@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DAT190_Bachelor_Project.ChallengesPage"
+             Title="Utfordringer">
+    <ContentPage.Content>
+
+        <ListView x:Name="ChallengesListView"
+                  IsPullToRefreshEnabled="false"
+                  RowHeight="150"
+                  SeparatorVisibility="None"
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Tapped="ChallengeTapped"> 
+                        <RelativeLayout HorizontalOptions="Fill">
+                            <Image Source="{Binding Image}" Aspect="AspectFill"
+                                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"/>
+                        </RelativeLayout>
+
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -15,9 +15,8 @@
                   IsPullToRefreshEnabled="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell> 
+                    <ViewCell Tapped="OnEdit"> 
                         <ViewCell.ContextActions>
-                            <MenuItem Clicked="OnEdit" CommandParameter="{Binding .}" Text="Endre" />
                             <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Slett" IsDestructive="True" />
                         </ViewCell.ContextActions>
                         <Label Text="{Binding Description}" />

@@ -5,23 +5,27 @@
              xmlns:local="clr-namespace:SkiaSharpSample"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:views="DAT190_Bachelor_Project.EmissionHighlightView"
-             x:Class="DAT190_Bachelor_Project.FrontPage"
-             Title="Mitt CO2 Avtrykk"
-             BackgroundColor="#e6e6e6">
+             x:Class="DAT190_Bachelor_Project.FrontPage">
 
-    <!-- Main Stack layout -->
-    <StackLayout x:Name="MainStackLayout" VerticalOptions="CenterAndExpand">
-        
-        <!-- Header -->
-
-        <skia:SKCanvasView 
+    <Grid x:Name="MainGrid">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="3*" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+        <Label Margin="20" VerticalOptions="Center" Text="Gjennomsnittlig CO2 avtrykk for nordmenn i Mai var 745 kg CO2. Sjekk ut utfordringer for hjelp til å redusere ditt avtrykk!" FontSize="15" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+      <skia:SKCanvasView 
             x:Name="carbonFootprintCanvas" 
             AutomationId="carbonFootprintCanvas" 
             PaintSurface="OnPaintSurface" 
-            HeightRequest="400" 
             EnableTouchEvents="true"
-            Touch="Handle_Touch"/>
+            Touch="Handle_Touch"
+            Grid.Row="1"
+            Grid.Column="0"
+        />
+    </Grid>
 
-    </StackLayout><!-- End Main Stack Layout -->
 
 </ContentPage>

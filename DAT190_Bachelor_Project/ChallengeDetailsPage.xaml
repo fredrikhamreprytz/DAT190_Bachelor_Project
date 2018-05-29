@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DAT190_Bachelor_Project.ChallengeDetailsPage"
+             BackgroundColor="{Binding BgColor}"
+             Title="{Binding Challenge.Name}"
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="{Binding Challenge.Task}" FontSize="20" Margin="30" FontAttributes="Bold" TextColor="White" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                    <Label Text="{Binding ProgressText}" TextColor="White" Margin="20, 0, 30, 0"/>
+                </StackLayout>
+                <ProgressBar Progress="{Binding Progress}" BackgroundColor="White"  Margin="30, 0, 30, 20" />
+                <Frame BackgroundColor="{Binding HighlightColor}" CornerRadius="0" Margin="0" HasShadow="false">
+                    <Label Text="Premier: " TextColor="White" />
+                </Frame>
+                <Label Text="Bakgrunn" FontSize="20" FontAttributes="Bold" TextColor="White" Margin="20"/>
+                <Label x:Name="DescriptionLabel" TextColor="White" Margin="20" />
+            </StackLayout>
+        </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

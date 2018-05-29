@@ -22,8 +22,8 @@ namespace DAT190_Bachelor_Project
 
         public void OnEdit(object sender, EventArgs e)
         {
-            var mi = ((MenuItem)sender);
-            DataSource ds = (DataSource)mi.CommandParameter;
+            var vc = ((ViewCell)sender);
+            DataSource ds = (DataSource)vc.BindingContext;
             Navigation.PushModalAsync(new EditDataSourcePage(ds));
         }
 

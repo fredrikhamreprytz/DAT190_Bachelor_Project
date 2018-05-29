@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using System;
 using System.Net;
 using System.IO;
@@ -24,7 +25,6 @@ namespace DAT190_Bachelor_Project
         public FrontPage()
         {
             InitializeComponent();
-
             // Instantiate dummy user
             dummyUser = new User();
             dummyUser.FirstName = "Knut";
@@ -50,14 +50,14 @@ namespace DAT190_Bachelor_Project
             string OBPDevKey = ConfigurationManager.AppSettings["OBPDevKey"];
             string OBPDevSecret = ConfigurationManager.AppSettings["OBPDevSecret"];
 
-            obp = new OBPUtil("oob", OBPDevKey, OBPDevSecret);
-            obp.getRequestToken(FinishWebRequest);
+            //obp = new OBPUtil("oob", OBPDevKey, OBPDevSecret);
+            //obp.getRequestToken(FinishWebRequest);
 
             dummyUser.SocialSecurityNr = "";
             dummyUser.ClientId = "";
             dummyUser.ClientSecret = "";
 
-            MainStackLayout.Children.Insert(0, new EmissionHighlightView(dummyUser.CarbonFootprint.Emissions[0]));
+            //MainGrid.Children.Add(new EmissionHighlightView(dummyUser.CarbonFootprint.Emissions[0]), 0, 0);
 
             // Save user to RESTapi
             // restService.SaveUserAsync(dummyUser);
@@ -115,8 +115,6 @@ namespace DAT190_Bachelor_Project
             cakePainter.DrawText();
             cakePainter.DrawPopover();
             cakePainter.DrawIcons();
-
-
         }
 
         async void Handle_Touch(object sender, SkiaSharp.Views.Forms.SKTouchEventArgs e)
@@ -125,8 +123,8 @@ namespace DAT190_Bachelor_Project
             PieceOfCake Slice = Cake.SelectPieceOfCake(e);
             if (Slice != null)
             {
-                MainStackLayout.Children.RemoveAt(0);
-                MainStackLayout.Children.Insert(0, new EmissionHighlightView(Slice.Emission));
+                //MainGrid.Children.RemoveAt(1);
+                //MainGrid.Children.Add(new EmissionHighlightView(Slice.Emission), 0, 0);
                 await Cake.AnimateSelection(Slice.Emission, 500);
                 Cake.CurrentlySelected = Slice;
 

@@ -10,8 +10,7 @@ namespace DAT190_Bachelor_Project
         public MainNavigationPage(Page page)
         {
             InitializeComponent();
-            NavigationPage.SetTitleIcon(this, "logo.png");
-
+            //NavigationPage.SetTitleIcon(this, "logo.png");
             Navigation.PushAsync(page);
         }
     }

@@ -3,26 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:DAT190_Bachelor_Project"
              x:Class="DAT190_Bachelor_Project.EmissionHighlightView"
-             Padding="20, 20, 20, 0">
+             Padding="20, 30, 10, 0">
     <ContentView.Content>
-        <Frame x:Name="HighlightedEmissionFrame" HasShadow="false" CornerRadius="15">
-            <StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                    <Label Margin="0" VerticalOptions="Center" x:Name="HighlightedEmissionHeaderLabel" Text="Content view" FontSize="20" TextColor="White" FontAttributes="Bold" />
-                    <Button VerticalOptions="Center" x:Name="EmissionDetailsButton" Text="Detaljer" Clicked="EmissionDetailsButtonClicked"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Frame BackgroundColor="White" HasShadow="false" Padding="2,2,2,2" CornerRadius="3">
-                        <Label Text="09.05" FontSize="12" />
-                    </Frame>
-                    <Frame BackgroundColor="White" HasShadow="false" Padding="2,2,2,2" CornerRadius="3">
-                        <Label Text="En transakjson som vi henter ned" FontSize="12" />
-                    </Frame>
-                    <Frame BackgroundColor="White" HasShadow="false" Padding="2,2,2,2" CornerRadius="3">
-                        <Label Text="238 km" FontSize="12" />
-                    </Frame>
-                </StackLayout>
-            </StackLayout>
-        </Frame>
+        <RelativeLayout>
+            <Image x:Name="YetiRankImage" HeightRequest="100" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End"
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=10}">
+            <Label Text="423" />
+            <Image Source="golden_footprint" HeightRequest="30" />
+        </StackLayout>
+        </RelativeLayout>
+
+                
     </ContentView.Content>
 </ContentView>

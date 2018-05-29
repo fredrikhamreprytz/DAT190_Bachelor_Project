@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using DAT190_Bachelor_Project.Model;
 using System.Diagnostics;
+using Plugin.XamJam.Screen;
 
 namespace DAT190_Bachelor_Project.Bakery
 {
@@ -25,22 +26,45 @@ namespace DAT190_Bachelor_Project.Bakery
         public float IconRadius { get; set; }
         public SKCanvasView CanvasView { get; set; }
         public PopOver PopOver { get; set; }
+        public SKPaint NormalFont { get; set; }
+        public SKPaint BoldFont { get; set; }
+        public float Width { get; set; }
+        public float Height { get; set; }
 
         public CakeOrientation(CarbonFootprint co2, SKCanvasView canvasView)
         {
             this.CanvasView = canvasView;
-            float Width = (float)canvasView.Width;
-            float Height = (float)canvasView.Height;
+            this.Width = (float)canvasView.Width;
+            this.Height = (float)canvasView.Height;
             this.CurrentlySelected = null;
             this.Center = new SKPoint(Width / 2, Height / 2);
-            this.Thickness = 34;
-            this.IconOffset = 6;
-            this.IconRadius = 32;
+            this.Thickness = Width/10;
+            this.IconOffset = Width/50;
+            this.IconRadius = Width/12;
 
-            this.Radius = Math.Min(Width / 2, Height / 2) - 1.75f * 32f;
+            this.Radius = Math.Min(Width / 2, Height / 2) - 1.5f * Width/12;
+
+
+            //System.Diagnostics.Debug.WriteLine("Width: " + size.Width);
             this.TotalValues = 0;
             this.CO2 = co2;
-            this.PopOver = new PopOver(Radius - Thickness * 1.3f, 80, 30, 25);
+            this.PopOver = new PopOver(Radius - Thickness * 1.3f, Width/5, Width/14, Width/18);
+
+            this.BoldFont = new SKPaint
+            {
+                IsAntialias = true,
+                Style = SKPaintStyle.Fill,
+                TextAlign = SKTextAlign.Center,
+                Typeface = SKTypeface.FromFile("OpenSans-Bold.ttf")
+            };
+
+            this.NormalFont = new SKPaint
+            {
+                IsAntialias = true,
+                Style = SKPaintStyle.Fill,
+                TextAlign = SKTextAlign.Center,
+                Typeface = SKTypeface.FromFile("OpenSans-Normal.ttf")
+            };
 
             foreach (IEmission Emission in CO2.Emissions)
             {
@@ -75,7 +99,6 @@ namespace DAT190_Bachelor_Project.Bakery
                 IEmission emission = PiecesOfCake[i].Emission;
                 float startAngle = PiecesOfCake[i].StartAngle += offset;
                 float arcAngle = PiecesOfCake[i].ArcAngle;
-
                 float iconRadius = IconRadius;
                 float iconOffset = IconOffset;
 
@@ -176,9 +199,9 @@ namespace DAT190_Bachelor_Project.Bakery
 
             // These two values constitute the animation speed 
             // angleInterval is the resolution of animation
-            float angleInterval = Math.Abs(offset) > 220 ? offset/28 : offset/16;
+            float angleInterval = Math.Abs(offset) > 220 ? offset/22 : offset/12;
             // ms is the frame rate. Acts unexpectedly for vaues below 10.
-            int ms = 10;
+            int ms = 8;
             IsAnimating = true;
             PopOver.Factor = 0;
             if (offset < 0)
@@ -190,7 +213,7 @@ namespace DAT190_Bachelor_Project.Bakery
 
                     await Task.Delay(TimeSpan.FromMilliseconds(ms));
                     i += angleInterval;
-                    System.Diagnostics.Debug.WriteLine("i: " + i);
+                    //System.Diagnostics.Debug.WriteLine("i: " + i);
                     if (i < offset*0.1)
                     {
                         float remaining = offset * 0.9f / angleInterval; 
@@ -212,7 +235,7 @@ namespace DAT190_Bachelor_Project.Bakery
                     CanvasView.InvalidateSurface();
                     await Task.Delay(TimeSpan.FromMilliseconds(ms));
                     i += angleInterval;
-                    System.Diagnostics.Debug.WriteLine("i: " + i);
+                    //System.Diagnostics.Debug.WriteLine("i: " + i);
                     if (i > offset * 0.1)
                     {
                         float remaining = offset * 0.9f / angleInterval;
@@ -225,7 +248,7 @@ namespace DAT190_Bachelor_Project.Bakery
                 await Task.Delay(TimeSpan.FromMilliseconds(ms));
                 CanvasView.InvalidateSurface();
             }
-            System.Diagnostics.Debug.WriteLine("offset: " + offset);
+            //System.Diagnostics.Debug.WriteLine("offset: " + offset);
 
             IsAnimating = false;
         }

@@ -136,6 +136,15 @@
     <Reference Include="Rg.Plugins.Popup.IOS">
       <HintPath>..\packages\Rg.Plugins.Popup.1.1.4.154-pre\lib\Xamarin.IOS\Rg.Plugins.Popup.IOS.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.CarouselView">
+      <HintPath>..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.XamJam.Screen.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.XamJam.Screen.1.0.7\lib\Xamarin.iOS10\Plugin.XamJam.Screen.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.XamJam.Screen">
+      <HintPath>..\packages\Xam.Plugins.XamJam.Screen.1.0.7\lib\Xamarin.iOS10\Plugin.XamJam.Screen.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAT190_Bachelor_Project\DAT190_Bachelor_Project.csproj">
@@ -146,10 +155,35 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\yeti_logo%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\yeti_logo%403x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\YetiPrince.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\YetiPrince.imageset\yeti_prince%403.png" />
+    <ImageAsset Include="Assets.xcassets\golden_footprint.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\golden_footprint.imageset\golden_footprint.png" />
+    <ImageAsset Include="Assets.xcassets\YetiPrince.imageset\prince_rank.png" />
+    <ImageAsset Include="Assets.xcassets\equinor_challenge.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\kiwi_challenge.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\platou_challenge.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\equinor_challenge.imageset\equinor_challenge.pdf" />
+    <ImageAsset Include="Assets.xcassets\platou_challenge.imageset\platou_challenge.pdf" />
+    <ImageAsset Include="Assets.xcassets\kiwi_challenge.imageset\kiwi_challenge.png" />
+    <ImageAsset Include="Assets.xcassets\avocado_badge.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\month_badge.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\avocado_badge.imageset\avacada_badge.png" />
+    <ImageAsset Include="Assets.xcassets\month_badge.imageset\month_badge.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Data\" />
+    <Folder Include="Assets.xcassets\YetiPrince.imageset\" />
+    <Folder Include="Assets.xcassets\golden_footprint.imageset\" />
+    <Folder Include="Assets.xcassets\equinor_challenge.imageset\" />
+    <Folder Include="Assets.xcassets\kiwi_challenge.imageset\" />
+    <Folder Include="Assets.xcassets\platou_challenge.imageset\" />
+    <Folder Include="Assets.xcassets\avocado_badge.imageset\" />
+    <Folder Include="Assets.xcassets\month_badge.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -163,6 +197,28 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fp%402x.png" />
+    <BundleResource Include="Resources\fp%403x.png" />
+    <BundleResource Include="Resources\ac%402x.png" />
+    <BundleResource Include="Resources\ac%403x.png" />
+    <BundleResource Include="Resources\ch%402x.png" />
+    <BundleResource Include="Resources\ch%403x.png" />
+    <BundleResource Include="Resources\OpenSans-Bold.ttf" />
+    <BundleResource Include="Resources\OpenSans-Regular.ttf" />
+    <BundleResource Include="Resources\splash_background%402x.png" />
+    <BundleResource Include="Resources\splash_background%403x.png" />
+    <BundleResource Include="Resources\yeti_text%402x.png" />
+    <BundleResource Include="Resources\yeti_text%403x.png" />
+    <BundleResource Include="Resources\splash_picture%402x.png" />
+    <BundleResource Include="Resources\splash_picture%403x.png" />
+    <BundleResource Include="Resources\splash_img.pdf" />
+    <BundleResource Include="Resources\yeti_prince%402.png" />
+    <BundleResource Include="Resources\yeti_prince%403.png" />
+    <BundleResource Include="Resources\kiwi_challenge.png" />
+    <BundleResource Include="Resources\settings_icon%402x.png" />
+    <BundleResource Include="Resources\profile_icon%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.1.444934\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.1.444934\build\netstandard1.0\Xamarin.Forms.targets')" />

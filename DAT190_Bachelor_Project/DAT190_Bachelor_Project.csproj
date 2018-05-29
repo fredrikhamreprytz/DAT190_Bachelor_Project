@@ -42,10 +42,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainNavigationPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="EmissionHighlightView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -53,6 +49,28 @@
     <EmbeddedResource Include="EditDataSourcePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChallengesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabbedPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AchievementsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenSans-Bold.ttf" />
+    <EmbeddedResource Include="OpenSans-Regular.ttf" />
+    <EmbeddedResource Include="NewNavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChallengeDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -84,9 +102,6 @@
     <Compile Include="EmissionDetailsPage.xaml.cs">
       <DependentUpon>EmissionDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainNavigationPage.xaml.cs">
-      <DependentUpon>MainNavigationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="EmissionHighlightView.xaml.cs">
       <DependentUpon>EmissionHighlightView.xaml</DependentUpon>
     </Compile>
@@ -98,6 +113,22 @@
     <Compile Include="Bakery\Icon.cs" />
     <Compile Include="Bakery\CakeUtil.cs" />
     <Compile Include="Bakery\PopOver.cs" />
+    <Compile Include="ChallengesPage.xaml.cs">
+      <DependentUpon>ChallengesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainTabbedPage.xaml.cs">
+      <DependentUpon>MainTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AchievementsPage.xaml.cs">
+      <DependentUpon>AchievementsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewNavigationPage.xaml.cs">
+      <DependentUpon>NewNavigationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Challenge.cs" />
+    <Compile Include="ChallengeDetailsPage.xaml.cs">
+      <DependentUpon>ChallengeDetailsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
@@ -181,6 +212,12 @@
     </Reference>
     <Reference Include="IdentityModel.Portable">
       <HintPath>..\packages\IdentityModel.1.0.0\lib\portable-net45+win8+wpa81\IdentityModel.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.XamJam.Screen.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.XamJam.Screen.1.0.7\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.XamJam.Screen.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.XamJam.Screen">
+      <HintPath>..\packages\Xam.Plugins.XamJam.Screen.1.0.7\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.XamJam.Screen.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

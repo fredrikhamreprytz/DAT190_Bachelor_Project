@@ -154,6 +154,9 @@
     <Reference Include="Rg.Plugins.Popup.Droid">
       <HintPath>..\packages\Rg.Plugins.Popup.1.1.4.154-pre\lib\MonoAndroid\Rg.Plugins.Popup.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.CarouselView">
+      <HintPath>..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\MonoAndroid10\Xamarin.Forms.CarouselView.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAT190_Bachelor_Project\DAT190_Bachelor_Project.csproj">
@@ -173,13 +176,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\drawable\icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ac.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ch.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\fp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ac.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ch.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\fp.png" />
+    <AndroidResource Include="Resources\layout\Tabbar.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

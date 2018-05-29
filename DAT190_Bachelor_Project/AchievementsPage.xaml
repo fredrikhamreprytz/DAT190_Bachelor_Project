@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DAT190_Bachelor_Project.AchievementsPage"
+             Title="Min Profil">
+    
+    <ContentPage.Content>
+        <ScrollView Padding="20, 20, 20, 20" >
+            <StackLayout>
+            <Label Text="Hei Knut!" FontSize="40" FontAttributes="Bold" HorizontalOptions="Center" TextColor="Gray"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Image Source="YetiPrince" Margin="10, 20, 10, 40" />
+            </StackLayout>
+                <Label Text="Dine premier" FontSize="30" FontAttributes="Bold" TextColor="Gray" />
+                <Grid x:Name="MainGrid" RowSpacing="0">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                  </Grid.ColumnDefinitions>
+                    <Image Source="avocado_badge" Grid.Row="0" Grid.Column="0" Margin="5,0,5,0"/>
+                    <Image Source="month_badge" Grid.Row="0" Grid.Column="1" Margin="5,0,5,0" />
+                    <Image Source="avocado_badge" Grid.Row="0" Grid.Column="2" Margin="5,0,5,0" />
+                    <Image Source="month_badge" Grid.Row="0" Grid.Column="3" Margin="5,0,5,0" />
+                    <Image Source="month_badge" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" />
+                    <Image Source="avocado_badge" Grid.Row="1" Grid.Column="1" Margin="5,0,5,0" />
+                    <Image Source="month_badge" Grid.Row="1" Grid.Column="2" Margin="5,0,5,0" />
+                </Grid>
+        </StackLayout>
+        </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

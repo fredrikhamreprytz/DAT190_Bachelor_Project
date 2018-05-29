@@ -14,6 +14,11 @@ namespace DAT190_Bachelor_Project.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+
+            App.DisplayScreenWidth = (double)UIScreen.MainScreen.Bounds.Width;
+            App.DisplayScreenHeight = (double)UIScreen.MainScreen.Bounds.Height;
+            App.DisplayScaleFactor = (double)UIScreen.MainScreen.Scale;
+
             Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
 

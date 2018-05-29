@@ -1,8 +1,14 @@
 <NavigationPage xmlns="http://xamarin.com/schemas/2014/forms"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-                ios:NavigationPage.PrefersLargeTitles="true"
+                ios:NavigationPage.PrefersLargeTitles="false"
+                xmlns:pages="clr-namespace:DAT190_Bachelor_Project;assembly=DAT190_Bachelor_Project"
                 x:Class="DAT190_Bachelor_Project.MainNavigationPage"
-                Icon="logo.png">
+                BarBackgroundColor="#50808E"
+                BarTextColor="White"
+                Title="Oversikt">
 
+    <x:Arguments>
+        <pages:FrontPage />
+    </x:Arguments>
 </NavigationPage>
