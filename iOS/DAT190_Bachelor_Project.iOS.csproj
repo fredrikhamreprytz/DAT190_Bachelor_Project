@@ -155,8 +155,6 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\yeti_logo%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\yeti_logo%403x.png" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
     <ImageAsset Include="Assets.xcassets\YetiPrince.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\YetiPrince.imageset\yeti_prince%403.png" />
@@ -173,6 +171,7 @@
     <ImageAsset Include="Assets.xcassets\month_badge.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\avocado_badge.imageset\avacada_badge.png" />
     <ImageAsset Include="Assets.xcassets\month_badge.imageset\month_badge.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\yeti_appicon%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -219,6 +218,7 @@
     <BundleResource Include="Resources\kiwi_challenge.png" />
     <BundleResource Include="Resources\settings_icon%402x.png" />
     <BundleResource Include="Resources\profile_icon%402x.png" />
+    <BundleResource Include="Resources\graph_icon%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.1.444934\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.1.444934\build\netstandard1.0\Xamarin.Forms.targets')" />

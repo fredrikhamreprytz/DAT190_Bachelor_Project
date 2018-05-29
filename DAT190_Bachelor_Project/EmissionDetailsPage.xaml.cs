@@ -13,6 +13,7 @@ namespace DAT190_Bachelor_Project
         public EmissionDetailsPage(IEmission emission)
         {
             InitializeComponent();
+            ToolbarItems.Add(new ToolbarItem("Statistikk", "graph_icon.png", async () => { var page = new ContentPage(); var result = await page.DisplayAlert("Title", "Message", "Accept", "Cancel"); System.Diagnostics.Debug.WriteLine("success: {0}", result); }));
             DataSourceListView.ItemsSource = dataSourceList;
             Title = emission.Type.ToString() + "utslipp";
             dataSourceList.Add(new DataSource(DateTime.Now, "Some datasource", 23.98, EmissionType.Flight));

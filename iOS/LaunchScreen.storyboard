@@ -19,7 +19,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="798" translatesAutoresizingMaskIntoConstraints="NO" image="splash_background.png">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="-5" y="-5" width="424" height="746"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="803" translatesAutoresizingMaskIntoConstraints="NO" image="splash_picture.png" fixedFrame="YES">
                                 <rect key="frame" x="87" y="304" width="240" height="128"/>
@@ -27,10 +27,10 @@
                             </imageView>
                         </subviews>
                         <constraints>
-                            <constraint id="799" firstItem="798" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="top"/>
-                            <constraint id="800" firstItem="Ze5-6b-2t3" firstAttribute="trailing" secondItem="798" secondAttribute="trailing"/>
-                            <constraint id="801" firstItem="xb3-aO-Qok" firstAttribute="bottom" secondItem="798" secondAttribute="bottom"/>
-                            <constraint id="802" firstItem="798" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading"/>
+                            <constraint id="799" firstItem="798" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="top" constant="-5"/>
+                            <constraint id="800" firstItem="Ze5-6b-2t3" firstAttribute="trailing" secondItem="798" secondAttribute="trailing" constant="-5"/>
+                            <constraint id="801" firstItem="xb3-aO-Qok" firstAttribute="bottom" secondItem="798" secondAttribute="bottom" constant="-5"/>
+                            <constraint id="802" firstItem="798" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-5"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -46,5 +46,15 @@
         <image name="splash_background.png" width="213" height="322.666656"/>
         <image name="yeti_text.png" width="145.666672" height="100"/>
         <image name="splash_picture.png" width="133.333328" height="82"/>
+        <image name="yeti_prince.png" width="143" height="163"/>
+        <image name="YetiPrince" width="377" height="372"/>
+        <image name="golden_footprint" width="381" height="579"/>
+        <image name="kiwi_challenge" width="1133" height="495"/>
+        <image name="kiwi_challenge.png" width="1133" height="495"/>
+        <image name="avocado_badge" width="268" height="268"/>
+        <image name="month_badge" width="270" height="270"/>
+        <image name="settings_icon.png" width="25" height="25"/>
+        <image name="profile_icon.png" width="23" height="23"/>
+        <image name="graph_icon.png" width="23" height="22"/>
     </resources>
 </document>

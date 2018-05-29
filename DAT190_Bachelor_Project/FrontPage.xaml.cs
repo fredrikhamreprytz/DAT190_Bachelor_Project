@@ -32,6 +32,8 @@ namespace DAT190_Bachelor_Project
             dummyUser.LastName = "Helland";
             dummyUser.Password = "passord";
 
+            ToolbarItems.Add(new ToolbarItem("Statistikk", "graph_icon.png", async () => { var page = new ContentPage(); var result = await page.DisplayAlert("Title", "Message", "Accept", "Cancel"); System.Diagnostics.Debug.WriteLine("success: {0}", result); }));
+
 
             // Create dummy vehicle
             Vehicle dummyVehicle = new Vehicle("AA 12345", VehicleSize.Medium, FuelType.Petrol, 0.7);
@@ -120,19 +122,47 @@ namespace DAT190_Bachelor_Project
         async void Handle_Touch(object sender, SkiaSharp.Views.Forms.SKTouchEventArgs e)
         {
             SKPoint touchLocation = e.Location;
-            PieceOfCake Slice = Cake.SelectPieceOfCake(e);
-            if (Slice != null)
+
+            float popOverWidth = (float)Math.Sqrt(2 * Math.Pow(Cake.PopOver.Radius, 2));
+
+            float minX = Cake.Center.X - 0.5f * popOverWidth;
+            float maxX = Cake.Center.X + 0.5f * popOverWidth;
+            float minY = Cake.Center.Y - 0.5f * popOverWidth;
+            float maxY = Cake.Center.X + 0.5f * popOverWidth;
+
+            minX *= Cake.Scale;
+            maxX *= Cake.Scale;
+            minY *= Cake.Scale;
+            maxY *= Cake.Scale;
+
+            bool insideX = touchLocation.X > minX && touchLocation.X < maxX;
+            bool insideY = touchLocation.Y > minY && touchLocation.Y < maxY;
+
+            if (insideX && insideY && Cake.CurrentlySelected != null)
             {
-                //MainGrid.Children.RemoveAt(1);
-                //MainGrid.Children.Add(new EmissionHighlightView(Slice.Emission), 0, 0);
-                await Cake.AnimateSelection(Slice.Emission, 500);
-                Cake.CurrentlySelected = Slice;
-
-            } else {
-                Cake.CurrentlySelected = null;
-
+                await Navigation.PushAsync(new EmissionDetailsPage(Cake.CurrentlySelected.Emission));
             }
-            Cake.CanvasView.InvalidateSurface();
+            else 
+            {
+                PieceOfCake Slice = Cake.SelectPieceOfCake(e);
+                if (Slice != null)
+                {
+                    //MainGrid.Children.RemoveAt(1);
+                    //MainGrid.Children.Add(new EmissionHighlightView(Slice.Emission), 0, 0);
+                    await Cake.AnimateSelection(Slice.Emission, 500);
+
+                    Cake.CurrentlySelected = Slice;
+
+                }
+                else
+                {
+                    Cake.CurrentlySelected = null;
+
+                }
+                Cake.CanvasView.InvalidateSurface();
+            }
+
+
         }
 
     }

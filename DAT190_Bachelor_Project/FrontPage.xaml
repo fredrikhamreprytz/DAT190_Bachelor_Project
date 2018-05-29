@@ -5,27 +5,40 @@
              xmlns:local="clr-namespace:SkiaSharpSample"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:views="DAT190_Bachelor_Project.EmissionHighlightView"
-             x:Class="DAT190_Bachelor_Project.FrontPage">
+             x:Class="DAT190_Bachelor_Project.FrontPage"
+             Title="Ditt CO2 Avtrykk">
 
     <Grid x:Name="MainGrid">
       <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
-        <RowDefinition Height="3*" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
-        <Label Margin="20" VerticalOptions="Center" Text="Gjennomsnittlig CO2 avtrykk for nordmenn i Mai var 745 kg CO2. Sjekk ut utfordringer for hjelp til å redusere ditt avtrykk!" FontSize="15" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-      <skia:SKCanvasView 
+        
+        <StackLayout Grid.Row="0" Grid.Column="0">
+            <Label Margin="20, 20, 20, 0" 
+                   Text="Visste du at:" 
+                   FontSize="20" 
+                   FontAttributes="Bold" 
+                   TextColor="Gray" />
+            <Label Margin="20, 0, 20, 20" 
+                   VerticalOptions="Center" 
+                   FontSize="15" 
+                   TextColor="Gray" 
+                   HorizontalOptions="Center" 
+                   Text="Gjennomsnittlig CO2 avtrykk for nordmenn i Mai var 745 kg CO2." />
+        </StackLayout>
+
+        <skia:SKCanvasView 
             x:Name="carbonFootprintCanvas" 
             AutomationId="carbonFootprintCanvas" 
             PaintSurface="OnPaintSurface" 
             EnableTouchEvents="true"
             Touch="Handle_Touch"
             Grid.Row="1"
-            Grid.Column="0"
-        />
+            Grid.Column="0" />
     </Grid>
-
 
 </ContentPage>

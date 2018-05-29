@@ -12,41 +12,27 @@ namespace DAT190_Bachelor_Project
         {
             InitializeComponent();
 
-            FrontPage frontPage = new FrontPage()
-            {
-                Title = "Mitt CO2 Avtrykk"
-            };
-
-            ChallengesPage challengesPage = new ChallengesPage()
-            {
-                Title = "Utfordringer"
-            };
-
-            AchievementsPage achievementsPage = new AchievementsPage()
-            {
-            };
-
-            NewNavigationPage overviewNavigationStack = new NewNavigationPage(frontPage)
+            NewNavigationPage overviewNavigationStack = new NewNavigationPage(new FrontPage())
             {
                 BarBackgroundColor = Color.FromHex(ConfigurationManager.AppSettings["ThemeColor"]),
-                Title = "CO2 Avtrykk",
                 BarTextColor = Color.White,
+                Title ="CO2 Avtrykk",
                 Icon = "fp.png"
             };
 
-            NewNavigationPage challengesNavigationStack = new NewNavigationPage(challengesPage)
+            NewNavigationPage challengesNavigationStack = new NewNavigationPage(new ChallengesPage())
             {
                 BarBackgroundColor = Color.FromHex(ConfigurationManager.AppSettings["ThemeColor"]),
-                Title = "Utfordringer",
                 BarTextColor = Color.White,
+                Title = "Utfordringer",
                 Icon = "ch.png"
             };
 
-            NewNavigationPage achievementsNavigationStack = new NewNavigationPage(achievementsPage)
+            NewNavigationPage achievementsNavigationStack = new NewNavigationPage(new AchievementsPage())
             {
                 BarBackgroundColor = Color.FromHex(ConfigurationManager.AppSettings["ThemeColor"]),
-                Title = "Profil",
                 BarTextColor = Color.White,
+                Title = "Profil",
                 Icon = "profile_icon.png"
             };
 
