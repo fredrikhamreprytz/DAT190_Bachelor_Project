@@ -12,11 +12,19 @@ namespace DAT190_Bachelor_Project
         {
             InitializeComponent();
 
-            NewNavigationPage overviewNavigationStack = new NewNavigationPage(new FrontPage())
+            BarBackgroundColor = Color.FromHex(ConfigurationManager.AppSettings["ThemeColor"]);
+
+            FrontPage fp = new FrontPage()
+            {
+                BackgroundColor = Color.FromHex(ConfigurationManager.AppSettings["BackgroundColor"])
+            };
+
+
+            NewNavigationPage overviewNavigationStack = new NewNavigationPage(fp)
             {
                 BarBackgroundColor = Color.FromHex(ConfigurationManager.AppSettings["ThemeColor"]),
                 BarTextColor = Color.White,
-                Title ="CO2 Avtrykk",
+                Title ="CO2-fotavtrykk",
                 Icon = "fp.png"
             };
 

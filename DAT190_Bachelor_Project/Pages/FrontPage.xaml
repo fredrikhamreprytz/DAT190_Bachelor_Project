@@ -6,7 +6,7 @@
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:views="DAT190_Bachelor_Project.EmissionHighlightView"
              x:Class="DAT190_Bachelor_Project.FrontPage"
-             Title="Ditt CO2 Avtrykk">
+             Title="Ditt CO2-fotavtrykk">
 
     <Grid x:Name="MainGrid">
       <Grid.RowDefinitions>
@@ -28,7 +28,7 @@
                    FontSize="15" 
                    TextColor="Gray" 
                    HorizontalOptions="Center" 
-                   Text="Gjennomsnittlig CO2 avtrykk for nordmenn i Mai var 745 kg CO2." />
+                   Text="Gjennomsnittlig CO2-fotavtrykk for nordmenn i Mai var 745 kg CO2." />
         </StackLayout>
 
         <skia:SKCanvasView 

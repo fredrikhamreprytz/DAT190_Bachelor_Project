@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,21 +16,21 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="798" translatesAutoresizingMaskIntoConstraints="NO" image="splash_background.png">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="798">
                                 <rect key="frame" x="-5" y="-5" width="424" height="746"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="803" translatesAutoresizingMaskIntoConstraints="NO" image="splash_picture.png" fixedFrame="YES">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splash_picture.png" translatesAutoresizingMaskIntoConstraints="NO" id="803">
                                 <rect key="frame" x="87" y="304" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinX="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint id="799" firstItem="798" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="top" constant="-5"/>
-                            <constraint id="800" firstItem="Ze5-6b-2t3" firstAttribute="trailing" secondItem="798" secondAttribute="trailing" constant="-5"/>
-                            <constraint id="801" firstItem="xb3-aO-Qok" firstAttribute="bottom" secondItem="798" secondAttribute="bottom" constant="-5"/>
-                            <constraint id="802" firstItem="798" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-5"/>
+                            <constraint firstItem="798" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="top" constant="-5" id="799"/>
+                            <constraint firstAttribute="trailing" secondItem="798" secondAttribute="trailing" constant="-5" id="800"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="bottom" secondItem="798" secondAttribute="bottom" constant="-5" id="801"/>
+                            <constraint firstItem="798" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-5" id="802"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,19 +40,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fp.png" width="18" height="28"/>
-        <image name="ac.png" width="23" height="22.666666"/>
-        <image name="ch.png" width="23" height="21.333334"/>
         <image name="splash_background.png" width="213" height="322.666656"/>
-        <image name="yeti_text.png" width="145.666672" height="100"/>
         <image name="splash_picture.png" width="133.333328" height="82"/>
-        <image name="yeti_prince.png" width="143" height="163"/>
         <image name="YetiPrince" width="377" height="372"/>
         <image name="golden_footprint" width="381" height="579"/>
         <image name="kiwi_challenge" width="1133" height="495"/>
-        <image name="kiwi_challenge.png" width="1133" height="495"/>
         <image name="avocado_badge" width="268" height="268"/>
         <image name="month_badge" width="270" height="270"/>
+        <image name="fp.png" width="18" height="28"/>
+        <image name="ac.png" width="23" height="22.666666"/>
+        <image name="ch.png" width="23" height="21.333334"/>
+        <image name="yeti_text.png" width="145.666672" height="100"/>
+        <image name="yeti_prince.png" width="143" height="163"/>
+        <image name="kiwi_challenge.png" width="1133" height="495"/>
         <image name="settings_icon.png" width="25" height="25"/>
         <image name="profile_icon.png" width="23" height="23"/>
         <image name="graph_icon.png" width="23" height="22"/>

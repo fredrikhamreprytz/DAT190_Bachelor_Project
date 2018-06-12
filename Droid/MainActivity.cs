@@ -13,6 +13,8 @@ using Android.OS;
 namespace DAT190_Bachelor_Project.Droid
 {
     [Activity(Label = "DAT190_Bachelor_Project.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+
+
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

@@ -189,6 +189,14 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ch.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\fp.png" />
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
+    <AndroidResource Include="Resources\drawable\ch.png" />
+    <AndroidResource Include="Resources\drawable\fp.png" />
+    <AndroidResource Include="Resources\drawable\profile_icon.png" />
+    <AndroidResource Include="Resources\drawable\avocado_badge.png" />
+    <AndroidResource Include="Resources\drawable\equinor_challenge.pdf" />
+    <AndroidResource Include="Resources\drawable\yeti_prince.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\graph_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\graph_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

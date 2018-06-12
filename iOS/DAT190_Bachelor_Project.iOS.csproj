@@ -156,11 +156,8 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\YetiPrince.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\YetiPrince.imageset\yeti_prince%403.png" />
     <ImageAsset Include="Assets.xcassets\golden_footprint.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\golden_footprint.imageset\golden_footprint.png" />
-    <ImageAsset Include="Assets.xcassets\YetiPrince.imageset\prince_rank.png" />
     <ImageAsset Include="Assets.xcassets\equinor_challenge.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\kiwi_challenge.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\platou_challenge.imageset\Contents.json" />
@@ -172,17 +169,20 @@
     <ImageAsset Include="Assets.xcassets\avocado_badge.imageset\avacada_badge.png" />
     <ImageAsset Include="Assets.xcassets\month_badge.imageset\month_badge.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\yeti_appicon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\yeti_prince.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\yeti_prince.imageset\prince_rank.png" />
+    <ImageAsset Include="Assets.xcassets\yeti_prince.imageset\yeti_prince%403.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Data\" />
-    <Folder Include="Assets.xcassets\YetiPrince.imageset\" />
     <Folder Include="Assets.xcassets\golden_footprint.imageset\" />
     <Folder Include="Assets.xcassets\equinor_challenge.imageset\" />
     <Folder Include="Assets.xcassets\kiwi_challenge.imageset\" />
     <Folder Include="Assets.xcassets\platou_challenge.imageset\" />
     <Folder Include="Assets.xcassets\avocado_badge.imageset\" />
     <Folder Include="Assets.xcassets\month_badge.imageset\" />
+    <Folder Include="Assets.xcassets\yeti_prince.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
