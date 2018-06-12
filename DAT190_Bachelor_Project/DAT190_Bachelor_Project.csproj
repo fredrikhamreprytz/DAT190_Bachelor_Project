@@ -29,49 +29,49 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
-    <EmbeddedResource Include="FrontPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="App.config" />
-    <EmbeddedResource Include="EmissionDetailsPopupPage.xaml">
+    <EmbeddedResource Include="Pages\AchievementsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmissionDetailsPage.xaml">
+    <EmbeddedResource Include="Pages\ChallengeDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmissionHighlightView.xaml">
+    <EmbeddedResource Include="Pages\ChallengesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditDataSourcePage.xaml">
+    <EmbeddedResource Include="Pages\EditDataSourcePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChallengesPage.xaml">
+    <EmbeddedResource Include="Pages\EmissionDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainTabbedPage.xaml">
+    <EmbeddedResource Include="Pages\EmissionDetailsPopupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="AchievementsPage.xaml">
+    <EmbeddedResource Include="Pages\FrontPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="OpenSans-Bold.ttf" />
-    <EmbeddedResource Include="OpenSans-Regular.ttf" />
-    <EmbeddedResource Include="NewNavigationPage.xaml">
+    <EmbeddedResource Include="Pages\MainTabbedPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChallengeDetailsPage.xaml">
+    <EmbeddedResource Include="Pages\EmissionHighlightView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\NewNavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fonts\OpenSans-Bold.ttf" />
+    <EmbeddedResource Include="Fonts\OpenSans-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -80,9 +80,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\IEmission.cs" />
     <Compile Include="Model\Flight.cs" />
-    <Compile Include="FrontPage.xaml.cs">
-      <DependentUpon>FrontPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\Household.cs" />
     <Compile Include="Model\Fuel.cs" />
     <Compile Include="Model\Vehicle.cs" />
@@ -93,46 +90,51 @@
     <Compile Include="Model\CarbonFootprint.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Data\RestService.cs" />
-    <Compile Include="EmissionDetailsPopupPage.xaml.cs">
-      <DependentUpon>EmissionDetailsPopupPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Data\IDBCom.cs" />
     <Compile Include="Model\EmissionType.cs" />
     <Compile Include="Model\DataSource.cs" />
-    <Compile Include="EmissionDetailsPage.xaml.cs">
-      <DependentUpon>EmissionDetailsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EmissionHighlightView.xaml.cs">
-      <DependentUpon>EmissionHighlightView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EditDataSourcePage.xaml.cs">
-      <DependentUpon>EditDataSourcePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Bakery\CakeOrientation.cs" />
     <Compile Include="Bakery\PieceOfCake.cs" />
     <Compile Include="Bakery\Icon.cs" />
     <Compile Include="Bakery\CakeUtil.cs" />
     <Compile Include="Bakery\PopOver.cs" />
-    <Compile Include="ChallengesPage.xaml.cs">
-      <DependentUpon>ChallengesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainTabbedPage.xaml.cs">
-      <DependentUpon>MainTabbedPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AchievementsPage.xaml.cs">
+    <Compile Include="Model\Challenge.cs" />
+    <Compile Include="Pages\AchievementsPage.xaml.cs">
       <DependentUpon>AchievementsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewNavigationPage.xaml.cs">
-      <DependentUpon>NewNavigationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Challenge.cs" />
-    <Compile Include="ChallengeDetailsPage.xaml.cs">
+    <Compile Include="Pages\ChallengeDetailsPage.xaml.cs">
       <DependentUpon>ChallengeDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ChallengesPage.xaml.cs">
+      <DependentUpon>ChallengesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditDataSourcePage.xaml.cs">
+      <DependentUpon>EditDataSourcePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmissionDetailsPage.xaml.cs">
+      <DependentUpon>EmissionDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmissionDetailsPopupPage.xaml.cs">
+      <DependentUpon>EmissionDetailsPopupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FrontPage.xaml.cs">
+      <DependentUpon>FrontPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainTabbedPage.xaml.cs">
+      <DependentUpon>MainTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmissionHighlightView.xaml.cs">
+      <DependentUpon>EmissionHighlightView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewNavigationPage.xaml.cs">
+      <DependentUpon>NewNavigationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="Data\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Fonts\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AspNet.SignalR.Client">
