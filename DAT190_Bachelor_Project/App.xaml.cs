@@ -3,6 +3,7 @@ using System.Reflection;
 using PCLAppConfig;
 using DAT190_Bachelor_Project.Model;
 using DAT190_Bachelor_Project.Data;
+using AppServiceHelpers;
 
 namespace DAT190_Bachelor_Project
 {
@@ -16,6 +17,16 @@ namespace DAT190_Bachelor_Project
         public App()
         {
             InitializeComponent();
+            //// Create new EasyMobileServiceClient.
+            //var client = EasyMobileServiceClient.Create();
+            //// Initialize the library with URL of the Azure Mobile App.
+            //client.Initialize("{Your_Mobile_App_Backend_Url_Here}");
+            //// Register the models to create tables
+            ////client.RegisterTable<User>();
+
+            //// Finalize the schema for the database. All table registration must be done.
+            //client.FinalizeSchema();
+
             Assembly assembly = typeof(App).GetTypeInfo().Assembly;
             ConfigurationManager.Initialise(assembly.GetManifestResourceStream("DAT190_Bachelor_Project.App.config"));
             System.Diagnostics.Debug.WriteLine(DisplayScaleFactor);
