@@ -1,5 +1,8 @@
 ﻿using System;
 
+// This is a class that makes it possible for every user to add a vehicle to his/her profile
+// to calculate the CO2-emission as a result of fuel purchase
+
 namespace DAT190_Bachelor_Project.Model
 {
     public class Vehicle
